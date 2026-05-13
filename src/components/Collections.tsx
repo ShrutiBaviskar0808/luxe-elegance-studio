@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useShop } from "@/context/ShopContext";
 
-const collections = [
+type Cat = "Earrings" | "Rings" | "Necklaces" | "Bracelets";
+
+const collections: { name: Cat; tag: string; image: string; span: string }[] = [
   {
     name: "Earrings",
     tag: "32 pieces",
