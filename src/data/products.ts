@@ -70,8 +70,7 @@ export const products: Product[] = [
     name: "Mira Solitaire Studs",
     category: "Earrings",
     price: 5400,
-    image:
-      "https://images.unsplash.com/photo-1561172317-c64d34d96b8d?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/mira-solitaire-studs.svg",
     badge: "Bestseller",
   },
   {

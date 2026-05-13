@@ -1,0 +1,73 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="176" y1="144" x2="1020" y2="1056" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F9F2E7"/>
+      <stop offset="1" stop-color="#E8D2B6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 430) rotate(90) scale(420 420)">
+      <stop offset="0" stop-color="#FFFDF7" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFFDF7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="482" y1="330" x2="728" y2="830" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F7E2B5"/>
+      <stop offset="0.5" stop-color="#C8A35E"/>
+      <stop offset="1" stop-color="#8E6A2C"/>
+    </linearGradient>
+    <linearGradient id="gem" x1="425" y1="382" x2="774" y2="746" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.45" stop-color="#F7FAFF"/>
+      <stop offset="1" stop-color="#DCE7F5"/>
+    </linearGradient>
+    <linearGradient id="shadow" x1="372" y1="808" x2="828" y2="808" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9B7B49" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#9B7B49" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#9B7B49" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" rx="72" fill="url(#bg)"/>
+  <circle cx="600" cy="430" r="360" fill="url(#glow)"/>
+  <circle cx="600" cy="820" r="260" fill="url(#shadow)"/>
+
+  <g opacity="0.35">
+    <path d="M284 260C387 176 486 140 600 140C716 140 815 176 918 260" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(0 20)">
+    <g transform="translate(370 320)">
+      <circle cx="130" cy="110" r="32" fill="url(#gold)"/>
+      <circle cx="130" cy="110" r="18" fill="#FBF7EF"/>
+      <path d="M130 142L146 196H114L130 142Z" fill="url(#gold)"/>
+      <path d="M130 196C175 218 206 250 218 286C195 278 173 270 152 262C143 240 136 218 130 196Z" fill="url(#gold)"/>
+      <path d="M130 196C85 218 54 250 42 286C65 278 87 270 108 262C117 240 124 218 130 196Z" fill="url(#gold)"/>
+      <g transform="translate(84 250)">
+        <path d="M46 0L92 58L46 132L0 58L46 0Z" fill="url(#gem)" stroke="#B7C6D8" stroke-width="5"/>
+        <path d="M46 0L62 58L46 132L30 58L46 0Z" fill="#FFFFFF" fill-opacity="0.55"/>
+        <path d="M0 58H92" stroke="#B7C6D8" stroke-width="4" opacity="0.8"/>
+        <path d="M46 0V132" stroke="#B7C6D8" stroke-width="4" opacity="0.8"/>
+        <path d="M14 22L46 58L78 22" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+      </g>
+    </g>
+
+    <g transform="translate(650 340)">
+      <circle cx="130" cy="90" r="32" fill="url(#gold)"/>
+      <circle cx="130" cy="90" r="18" fill="#FBF7EF"/>
+      <path d="M130 122L146 176H114L130 122Z" fill="url(#gold)"/>
+      <path d="M130 176C175 198 206 230 218 266C195 258 173 250 152 242C143 220 136 198 130 176Z" fill="url(#gold)"/>
+      <path d="M130 176C85 198 54 230 42 266C65 258 87 250 108 242C117 220 124 198 130 176Z" fill="url(#gold)"/>
+      <g transform="translate(84 230)">
+        <path d="M46 0L92 58L46 132L0 58L46 0Z" fill="url(#gem)" stroke="#B7C6D8" stroke-width="5"/>
+        <path d="M46 0L62 58L46 132L30 58L46 0Z" fill="#FFFFFF" fill-opacity="0.55"/>
+        <path d="M0 58H92" stroke="#B7C6D8" stroke-width="4" opacity="0.8"/>
+        <path d="M46 0V132" stroke="#B7C6D8" stroke-width="4" opacity="0.8"/>
+        <path d="M14 22L46 58L78 22" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+      </g>
+    </g>
+  </g>
+
+  <g opacity="0.35">
+    <circle cx="420" cy="420" r="18" fill="#FFFFFF"/>
+    <circle cx="800" cy="360" r="12" fill="#FFFFFF"/>
+    <circle cx="860" cy="560" r="10" fill="#FFFFFF"/>
+    <circle cx="360" cy="620" r="12" fill="#FFFFFF"/>
+  </g>
+</svg>
