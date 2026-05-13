@@ -1,5 +1,9 @@
-import { motion } from "framer-motion";
-import { Instagram, Mail, MapPin, Phone, Send } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Instagram, Mail, MapPin, Phone, Send, CheckCircle2 } from "lucide-react";
+
+type FormState = { name: string; email: string; phone: string; interest: string; message: string };
+type Errors = Partial<Record<keyof FormState, string>>;
 
 export default function ReachOut() {
   return (
