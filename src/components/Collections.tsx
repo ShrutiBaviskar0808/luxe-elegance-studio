@@ -87,7 +87,7 @@ export default function Collections() {
                   </h3>
                 </div>
               </div>
-            </motion.a>
+            </motion.button>
           ))}
         </div>
       </div>
