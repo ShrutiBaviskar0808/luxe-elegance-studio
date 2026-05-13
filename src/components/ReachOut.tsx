@@ -24,46 +24,9 @@ export default function ReachOut() {
         </div>
 
         <div className="mt-16 grid lg:grid-cols-12 gap-8">
-          {/* Form */}
-          <motion.form
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-7 glass-dark rounded-[2rem] p-8 sm:p-10 shadow-luxe"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <div className="grid sm:grid-cols-2 gap-5">
-              <Field label="Your name" placeholder="Aria Devereux" />
-              <Field label="Email" type="email" placeholder="aria@example.com" />
-              <Field label="Phone" placeholder="+91 99999 99999" />
-              <Field label="Interest" placeholder="Bespoke ring" />
-            </div>
-            <div className="mt-5">
-              <label className="text-[10px] uppercase tracking-[0.3em] text-ivory/60">Message</label>
-              <textarea
-                rows={5}
-                placeholder="Tell us about the piece you're dreaming of…"
-                className="mt-2 w-full rounded-2xl bg-ivory/5 border border-ivory/15 px-4 py-3 text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition resize-none"
-              />
-            </div>
-            <div className="mt-7 flex flex-wrap gap-3 items-center justify-between">
-              <button
-                type="submit"
-                className="shine inline-flex items-center gap-3 rounded-full bg-gradient-gold text-onyx px-7 py-3.5 text-xs uppercase tracking-[0.25em] font-medium shadow-glow hover:opacity-95 transition"
-              >
-                Send Enquiry <Send className="h-4 w-4" />
-              </button>
-              <a
-                href="https://wa.me/919999999999"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-ivory/20 px-6 py-3 text-xs uppercase tracking-[0.25em] hover:border-gold hover:text-gold transition"
-              >
-                <Phone className="h-4 w-4" /> WhatsApp Concierge
-              </a>
-            </div>
-          </motion.form>
+          <div className="lg:col-span-7">
+            <ContactForm />
+          </div>
 
           {/* Side cards */}
           <div className="lg:col-span-5 grid gap-5">
