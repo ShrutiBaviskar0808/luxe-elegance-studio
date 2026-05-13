@@ -32,8 +32,13 @@ const collections: { name: Cat; tag: string; image: string; span: string }[] = [
 ];
 
 export default function Collections() {
+  const { setCategory } = useShop();
+  const goTo = (cat: Cat) => {
+    setCategory(cat);
+    document.getElementById("new-arrival")?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
-    <section id="collections" className="relative py-28 sm:py-36 bg-cream overflow-hidden">
+    <section id="collections" className="relative py-28 sm:py-36 bg-cream overflow-hidden scroll-mt-24">
       <div className="pointer-events-none absolute -top-32 left-1/3 h-[420px] w-[420px] rounded-full bg-champagne/40 blur-[140px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
@@ -50,14 +55,15 @@ export default function Collections() {
 
         <div className="grid gap-5 lg:gap-6 grid-cols-1 lg:grid-cols-12 auto-rows-[260px] lg:auto-rows-[280px]">
           {collections.map((c, i) => (
-            <motion.a
+            <motion.button
               key={c.name}
-              href="#new-arrival"
+              type="button"
+              onClick={() => goTo(c.name)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: i * 0.1 }}
-              className={`group relative overflow-hidden rounded-[2rem] shadow-soft hover:shadow-luxe transition-all duration-500 ${c.span}`}
+              className={`group relative overflow-hidden rounded-[2rem] shadow-soft hover:shadow-luxe transition-all duration-500 text-left ${c.span}`}
             >
               <img
                 src={c.image}
