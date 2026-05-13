@@ -1,26 +1,46 @@
 import { createFileRoute } from "@tanstack/react-router";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import NewArrival from "@/components/NewArrival";
+import Collections from "@/components/Collections";
+import About from "@/components/About";
+import ReachOut from "@/components/ReachOut";
+import Footer from "@/components/Footer";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Maison Or — Hand-finished Fine Jewelry" },
+      {
+        name: "description",
+        content:
+          "Maison Or — heirloom fine jewelry, hand-finished in our Jaipur atelier. Discover the new arrivals, signature collections, and bespoke commissions.",
+      },
+      { property: "og:title", content: "Maison Or — Hand-finished Fine Jewelry" },
+      {
+        property: "og:description",
+        content: "Timeless brilliance, sculpted in light. Hand-finished fine jewelry made to be lived in.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1600&q=85",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main className="bg-background text-foreground">
+      <Navbar />
+      <Hero />
+      <NewArrival />
+      <Collections />
+      <About />
+      <ReachOut />
+      <Footer />
+    </main>
+  );
 }
