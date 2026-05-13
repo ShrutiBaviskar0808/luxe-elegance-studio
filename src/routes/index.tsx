@@ -1,9 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import NewArrival from "@/components/NewArrival";
+import Trending from "@/components/Trending";
 import Collections from "@/components/Collections";
+import NewArrival from "@/components/NewArrival";
+import PromoBanner from "@/components/PromoBanner";
+import BestSellers from "@/components/BestSellers";
 import About from "@/components/About";
+import Testimonials from "@/components/Testimonials";
+import InstagramFeed from "@/components/InstagramFeed";
 import ReachOut from "@/components/ReachOut";
 import Footer from "@/components/Footer";
 
@@ -11,16 +17,17 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Maison Or — Hand-finished Fine Jewelry" },
+      { title: "PIPA Jewellery — Hand-finished Luxury Fine Jewellery" },
       {
         name: "description",
         content:
-          "Maison Or — heirloom fine jewelry, hand-finished in our Jaipur atelier. Discover the new arrivals, signature collections, and bespoke commissions.",
+          "PIPA Jewellery — handcrafted luxury fine jewellery designed to elevate every moment. Discover new arrivals, bestsellers, and signature collections.",
       },
-      { property: "og:title", content: "Maison Or — Hand-finished Fine Jewelry" },
+      { property: "og:title", content: "PIPA Jewellery — Hand-finished Luxury Fine Jewellery" },
       {
         property: "og:description",
-        content: "Timeless brilliance, sculpted in light. Hand-finished fine jewelry made to be lived in.",
+        content:
+          "Timeless elegance crafted for every woman. Hand-finished fine jewellery from the PIPA atelier.",
       },
       {
         property: "og:image",
@@ -34,11 +41,17 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="bg-background text-foreground">
+      <AnnouncementBar />
       <Navbar />
       <Hero />
-      <NewArrival />
+      <Trending />
       <Collections />
+      <NewArrival />
+      <PromoBanner />
+      <BestSellers />
       <About />
+      <Testimonials />
+      <InstagramFeed />
       <ReachOut />
       <Footer />
     </main>

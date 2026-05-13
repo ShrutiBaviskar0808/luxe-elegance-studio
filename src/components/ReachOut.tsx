@@ -11,7 +11,7 @@ export default function ReachOut() {
         <div className="text-center max-w-3xl mx-auto">
           <p className="text-xs uppercase tracking-[0.35em] text-gold">Reach Out</p>
           <h2 className="mt-3 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-balance">
-            Step into the <em className="not-italic text-gradient-gold">Maison</em>.
+            Step into <em className="not-italic text-gradient-gold">PIPA</em>.
           </h2>
           <p className="mt-5 text-ivory/70">
             Book a private viewing, request a bespoke commission, or simply say hello.
@@ -31,7 +31,7 @@ export default function ReachOut() {
           >
             <div className="grid sm:grid-cols-2 gap-5">
               <Field label="Your name" placeholder="Aria Devereux" />
-              <Field label="Email" type="email" placeholder="aria@maison.com" />
+              <Field label="Email" type="email" placeholder="aria@example.com" />
               <Field label="Phone" placeholder="+91 99999 99999" />
               <Field label="Interest" placeholder="Bespoke ring" />
             </div>
@@ -71,12 +71,12 @@ export default function ReachOut() {
             <ContactCard
               icon={Mail}
               title="Email"
-              lines={["concierge@maison-or.com", "press@maison-or.com"]}
+              lines={["concierge@pipajewellery.com", "press@pipajewellery.com"]}
             />
             <ContactCard
               icon={Instagram}
               title="Follow"
-              lines={["@maison.or — daily inspirations"]}
+              lines={["@pipa.jewellery — daily inspirations"]}
             />
 
             <div className="relative rounded-[2rem] overflow-hidden h-44 shadow-luxe">

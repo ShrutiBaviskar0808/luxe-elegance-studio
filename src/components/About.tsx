@@ -65,7 +65,7 @@ export default function About() {
             transition={{ delay: 0.1 }}
             className="mt-3 font-display text-5xl sm:text-6xl leading-[0.95] text-balance"
           >
-            Heirlooms made for the women who <em className="not-italic text-gradient-gold">write the future</em>.
+            Heirlooms made for the women who <em className="not-italic text-gradient-gold">shine their own way</em>.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 14 }}
@@ -74,10 +74,10 @@ export default function About() {
             transition={{ delay: 0.2 }}
             className="mt-6 max-w-xl text-muted-foreground leading-relaxed"
           >
-            Maison Or began as a single bench in a small Jaipur atelier. Three
-            generations later, our jewellers still set every stone by hand —
-            blending old-world technique with modern, weightless silhouettes
-            designed to be worn every single day.
+            At PIPA Jewellery, every piece is crafted to celebrate elegance,
+            confidence, and timeless beauty. Inspired by modern femininity and
+            luxury aesthetics, our collections are designed to make every moment
+            shine — beautifully, and forever.
           </motion.p>
 
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6">
