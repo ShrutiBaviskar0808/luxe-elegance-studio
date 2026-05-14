@@ -1,28 +1,34 @@
-import { Truck, Shield, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
-const items = [
-  { icon: Truck, text: "Complimentary shipping worldwide" },
-  { icon: Sparkles, text: "Hand-finished in our atelier" },
-  { icon: Shield, text: "Lifetime care · 100% authenticity" },
+const messages = [
+  "Free Shipping on orders above ₹999",
+  "New Arrivals · Live Now",
+  "Luxury Jewellery Collection · Hand-finished",
+  "Festive Edit · Up to 20% off select pieces",
 ];
 
 export default function AnnouncementBar() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((p) => (p + 1) % messages.length), 3500);
+    return () => clearInterval(id);
+  }, []);
   return (
-    <div className="bg-onyx text-ivory text-[11px] uppercase tracking-[0.28em]">
-      <div className="mx-auto max-w-7xl px-6 py-2.5 flex items-center justify-between gap-4 overflow-hidden">
-        <div className="hidden sm:flex items-center gap-8 text-ivory/70">
-          {items.slice(0, 2).map(({ icon: Icon, text }) => (
-            <span key={text} className="inline-flex items-center gap-2">
-              <Icon className="h-3 w-3 text-gold" /> {text}
-            </span>
-          ))}
-        </div>
-        <p className="mx-auto sm:mx-0 text-ivory/90">
-          ✦ Festive Edit · Up to 20% off select pieces ✦
-        </p>
-        <span className="hidden lg:inline-flex items-center gap-2 text-ivory/70">
-          <Shield className="h-3 w-3 text-gold" /> Lifetime care
-        </span>
+    <div className="bg-onyx text-ivory text-[10.5px] uppercase tracking-[0.32em]">
+      <div className="mx-auto max-w-7xl px-6 h-9 flex items-center justify-center relative overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={i}
+            initial={{ y: 14, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -14, opacity: 0 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+            className="text-ivory/90"
+          >
+            ✦ {messages[i]} ✦
+          </motion.span>
+        </AnimatePresence>
       </div>
     </div>
   );
