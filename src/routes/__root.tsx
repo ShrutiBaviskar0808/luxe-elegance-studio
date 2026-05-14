@@ -82,8 +82,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Pipa" },
       { name: "twitter:title", content: "Pipa App" },
       { name: "twitter:description", content: "Pipa Generated Project" },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/012eec02-0bc3-44f8-90b0-43a8cbc6dcec/id-preview-4aa4d907--a7e71c94-fdb0-443a-b153-4ea10e67ede1.lovable.app-1778780764218.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/012eec02-0bc3-44f8-90b0-43a8cbc6dcec/id-preview-4aa4d907--a7e71c94-fdb0-443a-b153-4ea10e67ede1.lovable.app-1778780764218.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/a0631bb4-db97-499c-a123-f9da6295c244" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/a0631bb4-db97-499c-a123-f9da6295c244" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
