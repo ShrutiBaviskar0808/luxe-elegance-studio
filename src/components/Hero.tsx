@@ -1,31 +1,39 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles, Star } from "lucide-react";
+import hero1 from "@/assets/hero-1.png";
+import hero2 from "@/assets/hero-2.png";
+import hero3 from "@/assets/hero-3.png";
+import hero4 from "@/assets/hero-4.png";
+import hero5 from "@/assets/hero-5.png";
 
 const slides = [
   {
     eyebrow: "New Festive Edit · 2026",
-    title: ["Timeless elegance,", "crafted for every", "woman."],
-    sub: "Discover handcrafted luxury jewellery designed to elevate your everyday style.",
-    image:
-      "https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1600&q=85",
-    side1:
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80",
-    side2:
-      "https://images.unsplash.com/photo-1602752250015-52934bc45613?auto=format&fit=crop&w=900&q=80",
+    main: hero3,
+    side1: hero5,
+    side2: hero4,
+    badge: { name: "Lip Couture Drops", price: "₹ 12,400" },
   },
   {
     eyebrow: "The Atelier · Edit 02",
-    title: ["Sculpted in light,", "loved for", "generations."],
-    sub: "Hand-finished 18K solid gold pieces — designed to be lived in, layered, and treasured.",
-    image:
-      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=85",
-    side1:
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80",
-    side2:
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80",
+    main: hero2,
+    side1: hero1,
+    side2: hero4,
+    badge: { name: "Orchid Bloom Studs", price: "₹ 8,900" },
+  },
+  {
+    eyebrow: "Signature · Heirloom Bangles",
+    main: hero4,
+    side1: hero3,
+    side2: hero5,
+    badge: { name: "Rosé Heirloom Cuff", price: "₹ 18,600" },
   },
 ];
+
+const TITLE = ["PIPA Jewellery —", "Timeless elegance", "for every moment."];
+const SUB =
+  "Handcrafted luxury jewellery designed to celebrate elegance, femininity, and modern sophistication.";
 
 export default function Hero() {
   const [i, setI] = useState(0);
@@ -61,31 +69,26 @@ export default function Hero() {
             </motion.div>
           </AnimatePresence>
 
-          <AnimatePresence mode="wait">
-            <motion.h1
-              key={s.title.join("-")}
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.8 }}
-              className="mt-7 font-display text-[clamp(2.8rem,7vw,5.8rem)] leading-[0.95] tracking-tight text-balance"
-            >
-              {s.title[0]}
-              <br />
-              <em className="not-italic text-gradient-gold">{s.title[1]}</em>
-              <br />
-              {s.title[2]}
-            </motion.h1>
-          </AnimatePresence>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-7 font-display text-[clamp(2.6rem,6.5vw,5.6rem)] leading-[0.95] tracking-tight text-balance"
+          >
+            {TITLE[0]}
+            <br />
+            <em className="not-italic text-gradient-gold">{TITLE[1]}</em>
+            <br />
+            {TITLE[2]}
+          </motion.h1>
 
           <motion.p
-            key={s.sub}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
             className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-muted-foreground"
           >
-            {s.sub}
+            {SUB}
           </motion.p>
 
           <motion.div
@@ -95,17 +98,17 @@ export default function Hero() {
             className="mt-10 flex flex-wrap items-center gap-4"
           >
             <a
-              href="#new-arrival"
-              className="shine group inline-flex items-center gap-3 rounded-full bg-foreground text-background px-7 py-4 text-xs uppercase tracking-[0.25em] hover:bg-foreground/90 transition shadow-luxe"
+              href="#collections"
+              className="shine group inline-flex items-center gap-3 rounded-full bg-foreground text-background px-7 py-4 text-xs uppercase tracking-[0.25em] hover:bg-foreground/90 transition shadow-luxe hover:shadow-[0_18px_50px_-10px_rgba(184,148,82,0.55)]"
             >
-              Shop Collection
+              Explore Collection
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a
               href="#new-arrival"
-              className="inline-flex items-center gap-3 rounded-full border border-foreground/20 px-7 py-4 text-xs uppercase tracking-[0.25em] hover:border-foreground/60 transition"
+              className="inline-flex items-center gap-3 rounded-full border border-foreground/20 px-7 py-4 text-xs uppercase tracking-[0.25em] hover:border-foreground/60 hover:bg-foreground/5 transition"
             >
-              Explore New Arrivals
+              Shop New Arrivals
             </a>
           </motion.div>
 
@@ -123,7 +126,6 @@ export default function Hero() {
             <span>Loved by 12,000+ women worldwide</span>
           </motion.div>
 
-          {/* Dots */}
           <div className="mt-10 flex items-center gap-2">
             {slides.map((_, k) => (
               <button
@@ -139,55 +141,79 @@ export default function Hero() {
         </div>
 
         {/* RIGHT - layered images */}
-        <div className="lg:col-span-6 relative h-[500px] sm:h-[600px] lg:h-[660px]">
+        <div className="lg:col-span-6 relative h-[520px] sm:h-[620px] lg:h-[680px]">
           <AnimatePresence mode="wait">
             <motion.div
-              key={s.image}
+              key={s.main}
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1 }}
-              className="absolute right-0 top-4 w-[78%] h-[88%] rounded-[2rem] overflow-hidden shadow-luxe"
+              className="group absolute right-0 top-4 w-[78%] h-[88%] rounded-[2rem] overflow-hidden shadow-luxe"
             >
-              <img src={s.image} alt="Luxury jewelry" className="h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-onyx/40 via-transparent to-transparent" />
+              <img
+                src={s.main}
+                alt="Signature luxury jewellery editorial"
+                className="h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-onyx/50 via-transparent to-transparent" />
+              <div className="absolute left-5 top-5 rounded-full glass px-3 py-1.5 text-[10px] uppercase tracking-[0.3em]">
+                Atelier Edit
+              </div>
             </motion.div>
           </AnimatePresence>
 
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.25 }}
-            className="float-slow absolute left-0 top-24 w-[44%] h-[40%] rounded-[1.5rem] overflow-hidden glass shadow-luxe"
-          >
-            <img src={s.side1} alt="Detail" className="h-full w-full object-cover" />
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={"s1-" + s.side1}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="float-slow absolute left-0 top-20 w-[44%] h-[40%] rounded-[1.5rem] overflow-hidden glass shadow-luxe"
+            >
+              <img src={s.side1} alt="Jewellery detail" className="h-full w-full object-cover" />
+            </motion.div>
+          </AnimatePresence>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.35 }}
-            className="float-slow absolute left-6 bottom-2 w-[48%] h-[34%] rounded-[1.5rem] overflow-hidden shadow-luxe"
-            style={{ animationDelay: "1.5s" }}
-          >
-            <img src={s.side2} alt="Detail" className="h-full w-full object-cover" />
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={"s2-" + s.side2}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="float-slow absolute left-6 bottom-2 w-[48%] h-[34%] rounded-[1.5rem] overflow-hidden shadow-luxe"
+              style={{ animationDelay: "1.5s" }}
+            >
+              <img src={s.side2} alt="Bangle close up" className="h-full w-full object-cover" />
+            </motion.div>
+          </AnimatePresence>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="absolute right-4 bottom-6 glass rounded-2xl p-4 w-56 shadow-luxe"
-          >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Bestseller</p>
-            <p className="mt-1 font-serif text-lg leading-tight">Aurelia Drop Earrings</p>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="text-sm text-gold font-medium">₹ 8,400</span>
-              <span className="rounded-full bg-foreground text-background text-[10px] uppercase tracking-[0.2em] px-3 py-1.5">
-                Shop
-              </span>
-            </div>
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={"badge-" + s.badge.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="absolute right-4 bottom-6 glass rounded-2xl p-4 w-56 shadow-luxe"
+            >
+              <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                Featured
+              </p>
+              <p className="mt-1 font-serif text-lg leading-tight">{s.badge.name}</p>
+              <div className="mt-3 flex items-center justify-between">
+                <span className="text-sm text-gold font-medium">{s.badge.price}</span>
+                <a
+                  href="#new-arrival"
+                  className="rounded-full bg-foreground text-background text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 hover:bg-foreground/90 transition"
+                >
+                  Shop
+                </a>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
