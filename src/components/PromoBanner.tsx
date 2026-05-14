@@ -14,14 +14,16 @@ export default function PromoBanner() {
         >
           <div className="relative bg-gradient-onyx p-10 sm:p-14 lg:p-16 flex flex-col justify-center text-ivory">
             <div className="pointer-events-none absolute -top-20 -left-20 h-[340px] w-[340px] rounded-full bg-gold/30 blur-[120px]" />
-            <p className="text-xs uppercase tracking-[0.35em] text-gold relative">The Festive Edit</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-gold relative">
+              The Festive Edit
+            </p>
             <h3 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl leading-[0.95] text-balance relative">
               Up to <em className="not-italic text-gradient-gold">20% off</em>
               <br /> our most loved pieces.
             </h3>
             <p className="mt-5 max-w-md text-ivory/70 relative">
-              Discover handpicked silhouettes from the PIPA atelier — designed to be worn,
-              gifted, and treasured this season.
+              Discover handpicked silhouettes from the PIPA atelier — designed to be worn, gifted,
+              and treasured this season.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 relative">
               <a

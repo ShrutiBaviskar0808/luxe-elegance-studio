@@ -8,25 +8,29 @@ const collections: { name: Cat; tag: string; image: string; span: string }[] = [
   {
     name: "Earrings",
     tag: "32 pieces",
-    image: "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?auto=format&fit=crop&w=1200&q=80",
     span: "lg:col-span-7 lg:row-span-2",
   },
   {
     name: "Bracelets",
     tag: "18 pieces",
-    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1200&q=80",
     span: "lg:col-span-5",
   },
   {
     name: "Rings",
     tag: "26 pieces",
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80",
     span: "lg:col-span-5",
   },
   {
     name: "Necklaces",
     tag: "22 pieces",
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=80",
     span: "lg:col-span-12",
   },
 ];
@@ -38,7 +42,10 @@ export default function Collections() {
     document.getElementById("new-arrival")?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <section id="collections" className="relative py-28 sm:py-36 bg-cream overflow-hidden scroll-mt-24">
+    <section
+      id="collections"
+      className="relative py-28 sm:py-36 bg-cream overflow-hidden scroll-mt-24"
+    >
       <div className="pointer-events-none absolute -top-32 left-1/3 h-[420px] w-[420px] rounded-full bg-champagne/40 blur-[140px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
@@ -48,8 +55,8 @@ export default function Collections() {
             The Maison <em className="not-italic text-gradient-gold">collections</em>.
           </h2>
           <p className="mt-5 text-muted-foreground max-w-xl">
-            Four signature edits — each conceived in our atelier and refined over
-            months of stone-setting, polishing, and patient craft.
+            Four signature edits — each conceived in our atelier and refined over months of
+            stone-setting, polishing, and patient craft.
           </p>
         </div>
 

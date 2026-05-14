@@ -72,9 +72,7 @@ export default function WishlistDrawer() {
                             {p.category}
                           </p>
                           <h4 className="font-serif text-lg leading-tight truncate">{p.name}</h4>
-                          <p className="text-sm text-gold mt-0.5">
-                            ₹ {p.price.toLocaleString()}
-                          </p>
+                          <p className="text-sm text-gold mt-0.5">₹ {p.price.toLocaleString()}</p>
                           <div className="mt-2 flex items-center gap-2">
                             <button
                               onClick={() => {

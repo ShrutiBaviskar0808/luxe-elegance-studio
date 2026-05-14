@@ -10,7 +10,8 @@ export default function NewArrival() {
   const { products, category, setCategory } = useShop();
 
   const list = useMemo(() => {
-    const filtered = category === "All" ? products : products.filter((p) => p.category === category);
+    const filtered =
+      category === "All" ? products : products.filter((p) => p.category === category);
     return filtered.slice(0, 9);
   }, [products, category]);
 
@@ -75,10 +76,7 @@ export default function NewArrival() {
             No pieces in this edit yet — check back soon.
           </p>
         ) : (
-          <motion.div
-            layout
-            className="grid gap-6 sm:gap-8 grid-cols-2 lg:grid-cols-3"
-          >
+          <motion.div layout className="grid gap-6 sm:gap-8 grid-cols-2 lg:grid-cols-3">
             {list.map((p, i) => (
               <ProductCard key={p.id} p={p} index={i} />
             ))}

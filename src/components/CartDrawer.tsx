@@ -39,9 +39,7 @@ export default function CartDrawer() {
             <header className="flex items-center justify-between px-6 py-5 border-b border-foreground/10">
               <div className="flex items-center gap-2">
                 <ShoppingBag className="h-4 w-4 text-gold" />
-                <p className="text-[11px] uppercase tracking-[0.3em]">
-                  Your Bag · {cart.length}
-                </p>
+                <p className="text-[11px] uppercase tracking-[0.3em]">Your Bag · {cart.length}</p>
               </div>
               <button
                 onClick={() => setCartOpen(false)}

@@ -34,8 +34,8 @@ export default function Footer() {
         <div className="lg:col-span-5">
           <Logo tone="light" />
           <p className="mt-5 max-w-sm text-ivory/60 leading-relaxed">
-            Hand-finished fine jewellery, made to be lived in. Designed in our atelier
-            — delivered to your door, with love.
+            Hand-finished fine jewellery, made to be lived in. Designed in our atelier — delivered
+            to your door, with love.
           </p>
           <div className="mt-6 flex gap-3">
             {[Instagram, Facebook, Twitter, Youtube].map((Icon, i) => (
@@ -55,7 +55,10 @@ export default function Footer() {
           title="Shop"
           items={["New Arrival", "Earrings", "Rings", "Bracelets", "Necklaces"]}
         />
-        <FooterCol title="PIPA" items={["About Us", "Atelier", "Sustainability", "Press", "Careers"]} />
+        <FooterCol
+          title="PIPA"
+          items={["About Us", "Atelier", "Sustainability", "Press", "Careers"]}
+        />
         <FooterCol
           title="Care"
           items={["Reach Out", "Shipping", "Returns", "Lifetime care", "FAQ"]}

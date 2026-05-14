@@ -80,13 +80,20 @@
   --input: oklch(0.9 0.02 75);
   --ring: var(--gold);
 
-  --gradient-gold: linear-gradient(135deg, oklch(0.86 0.08 82), oklch(0.72 0.13 75), oklch(0.55 0.1 60));
+  --gradient-gold: linear-gradient(
+    135deg,
+    oklch(0.86 0.08 82),
+    oklch(0.72 0.13 75),
+    oklch(0.55 0.1 60)
+  );
   --gradient-ivory: linear-gradient(180deg, oklch(0.985 0.012 80), oklch(0.94 0.025 75));
-  --gradient-cinematic: radial-gradient(ellipse at top, oklch(0.92 0.04 78 / 0.8), transparent 60%),
-                        radial-gradient(ellipse at bottom right, oklch(0.78 0.11 80 / 0.25), transparent 55%);
+  --gradient-cinematic:
+    radial-gradient(ellipse at top, oklch(0.92 0.04 78 / 0.8), transparent 60%),
+    radial-gradient(ellipse at bottom right, oklch(0.78 0.11 80 / 0.25), transparent 55%);
   --gradient-onyx: linear-gradient(180deg, oklch(0.18 0.012 60), oklch(0.1 0.008 60));
 
-  --shadow-luxe: 0 30px 60px -20px oklch(0.3 0.05 70 / 0.25), 0 18px 36px -18px oklch(0.2 0.04 60 / 0.2);
+  --shadow-luxe:
+    0 30px 60px -20px oklch(0.3 0.05 70 / 0.25), 0 18px 36px -18px oklch(0.2 0.04 60 / 0.2);
   --shadow-glow: 0 0 60px oklch(0.78 0.11 80 / 0.35);
   --shadow-soft: 0 12px 40px -12px oklch(0.4 0.04 70 / 0.15);
 }
@@ -97,8 +104,12 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -106,20 +117,42 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
   }
-  h1,h2,h3,h4 { font-family: var(--font-serif); letter-spacing: -0.01em; }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
 }
 
 @layer utilities {
-  .font-display { font-family: var(--font-display); }
-  .font-serif { font-family: var(--font-serif); }
-  .text-balance { text-wrap: balance; }
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
 
-  .bg-gradient-gold { background-image: var(--gradient-gold); }
-  .bg-gradient-ivory { background-image: var(--gradient-ivory); }
-  .bg-gradient-cinematic { background-image: var(--gradient-cinematic); }
-  .bg-gradient-onyx { background-image: var(--gradient-onyx); }
+  .bg-gradient-gold {
+    background-image: var(--gradient-gold);
+  }
+  .bg-gradient-ivory {
+    background-image: var(--gradient-ivory);
+  }
+  .bg-gradient-cinematic {
+    background-image: var(--gradient-cinematic);
+  }
+  .bg-gradient-onyx {
+    background-image: var(--gradient-onyx);
+  }
 
-  .text-gold { color: var(--gold-deep); }
+  .text-gold {
+    color: var(--gold-deep);
+  }
   .text-gradient-gold {
     background: var(--gradient-gold);
     -webkit-background-clip: text;
@@ -127,9 +160,15 @@
     color: transparent;
   }
 
-  .shadow-luxe { box-shadow: var(--shadow-luxe); }
-  .shadow-glow { box-shadow: var(--shadow-glow); }
-  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-luxe {
+    box-shadow: var(--shadow-luxe);
+  }
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
 
   .glass {
     background: oklch(1 0 0 / 0.55);
@@ -148,8 +187,9 @@
     content: "";
     position: absolute;
     inset: -20%;
-    background: radial-gradient(circle at 30% 30%, oklch(0.86 0.1 80 / 0.35), transparent 55%),
-                radial-gradient(circle at 75% 70%, oklch(0.7 0.13 75 / 0.25), transparent 55%);
+    background:
+      radial-gradient(circle at 30% 30%, oklch(0.86 0.1 80 / 0.35), transparent 55%),
+      radial-gradient(circle at 75% 70%, oklch(0.7 0.13 75 / 0.25), transparent 55%);
     filter: blur(60px);
     z-index: 0;
     pointer-events: none;
@@ -168,19 +208,32 @@
     transition: transform 0.9s ease;
     pointer-events: none;
   }
-  .shine:hover::after { transform: translateX(120%); }
+  .shine:hover::after {
+    transform: translateX(120%);
+  }
 
   .marquee {
     animation: marquee 38s linear infinite;
   }
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 
-  .float-slow { animation: floaty 7s ease-in-out infinite; }
+  .float-slow {
+    animation: floaty 7s ease-in-out infinite;
+  }
   @keyframes floaty {
-    0%,100% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(-14px) rotate(1.5deg); }
+    0%,
+    100% {
+      transform: translateY(0) rotate(0);
+    }
+    50% {
+      transform: translateY(-14px) rotate(1.5deg);
+    }
   }
 }

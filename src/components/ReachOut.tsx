@@ -7,7 +7,10 @@ type Errors = Partial<Record<keyof FormState, string>>;
 
 export default function ReachOut() {
   return (
-    <section id="reach-out" className="relative py-28 sm:py-36 bg-gradient-onyx text-ivory overflow-hidden">
+    <section
+      id="reach-out"
+      className="relative py-28 sm:py-36 bg-gradient-onyx text-ivory overflow-hidden"
+    >
       <div className="pointer-events-none absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full bg-gold/30 blur-[160px]" />
       <div className="pointer-events-none absolute -bottom-32 right-0 h-[460px] w-[460px] rounded-full bg-bronze/40 blur-[160px]" />
 
@@ -18,8 +21,8 @@ export default function ReachOut() {
             Step into <em className="not-italic text-gradient-gold">PIPA</em>.
           </h2>
           <p className="mt-5 text-ivory/70">
-            Book a private viewing, request a bespoke commission, or simply say hello.
-            Our concierge replies within a few golden hours.
+            Book a private viewing, request a bespoke commission, or simply say hello. Our concierge
+            replies within a few golden hours.
           </p>
         </div>
 
@@ -185,13 +188,39 @@ function ContactForm() {
             noValidate
           >
             <div className="grid sm:grid-cols-2 gap-5">
-              <Field label="Your name" placeholder="Aria Devereux" value={data.name} onChange={set("name")} error={errors.name} />
-              <Field label="Email" type="email" placeholder="aria@example.com" value={data.email} onChange={set("email")} error={errors.email} />
-              <Field label="Phone" placeholder="+91 99999 99999" value={data.phone} onChange={set("phone")} error={errors.phone} />
-              <Field label="Interest" placeholder="Bespoke ring" value={data.interest} onChange={set("interest")} />
+              <Field
+                label="Your name"
+                placeholder="Aria Devereux"
+                value={data.name}
+                onChange={set("name")}
+                error={errors.name}
+              />
+              <Field
+                label="Email"
+                type="email"
+                placeholder="aria@example.com"
+                value={data.email}
+                onChange={set("email")}
+                error={errors.email}
+              />
+              <Field
+                label="Phone"
+                placeholder="+91 99999 99999"
+                value={data.phone}
+                onChange={set("phone")}
+                error={errors.phone}
+              />
+              <Field
+                label="Interest"
+                placeholder="Bespoke ring"
+                value={data.interest}
+                onChange={set("interest")}
+              />
             </div>
             <div className="mt-5">
-              <label className="text-[10px] uppercase tracking-[0.3em] text-ivory/60">Message</label>
+              <label className="text-[10px] uppercase tracking-[0.3em] text-ivory/60">
+                Message
+              </label>
               <textarea
                 rows={5}
                 value={data.message}
@@ -202,7 +231,9 @@ function ContactForm() {
                   errors.message ? "border-destructive" : "border-ivory/15 focus:border-gold"
                 }`}
               />
-              {errors.message && <p className="mt-1.5 text-[10px] text-destructive/90">{errors.message}</p>}
+              {errors.message && (
+                <p className="mt-1.5 text-[10px] text-destructive/90">{errors.message}</p>
+              )}
             </div>
             <div className="mt-7 flex flex-wrap gap-3 items-center justify-between">
               <button
@@ -232,7 +263,11 @@ function ContactCard({
   icon: Icon,
   title,
   lines,
-}: { icon: React.ComponentType<{ className?: string }>; title: string; lines: string[] }) {
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  lines: string[];
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -246,7 +281,9 @@ function ContactCard({
       <div>
         <p className="text-[10px] uppercase tracking-[0.3em] text-ivory/60">{title}</p>
         {lines.map((l) => (
-          <p key={l} className="mt-1 text-ivory/90">{l}</p>
+          <p key={l} className="mt-1 text-ivory/90">
+            {l}
+          </p>
         ))}
       </div>
     </motion.div>

@@ -9,10 +9,18 @@ const stats = [
 ];
 
 const features = [
-  { icon: Hammer, t: "Hand-finished", d: "Every piece is set, polished and inspected by hand in our atelier." },
+  {
+    icon: Hammer,
+    t: "Hand-finished",
+    d: "Every piece is set, polished and inspected by hand in our atelier.",
+  },
   { icon: Gem, t: "Rare stones", d: "Ethically sourced diamonds, emeralds, and South Sea pearls." },
   { icon: Leaf, t: "Recycled gold", d: "All pieces cast from 100% recycled 18K & 22K solid gold." },
-  { icon: ShieldCheck, t: "Lifetime care", d: "Complimentary cleaning, re-plating, and re-sizing forever." },
+  {
+    icon: ShieldCheck,
+    t: "Lifetime care",
+    d: "Complimentary cleaning, re-plating, and re-sizing forever.",
+  },
 ];
 
 export default function About() {
@@ -65,7 +73,8 @@ export default function About() {
             transition={{ delay: 0.1 }}
             className="mt-3 font-display text-5xl sm:text-6xl leading-[0.95] text-balance"
           >
-            Heirlooms made for the women who <em className="not-italic text-gradient-gold">shine their own way</em>.
+            Heirlooms made for the women who{" "}
+            <em className="not-italic text-gradient-gold">shine their own way</em>.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 14 }}
@@ -74,17 +83,18 @@ export default function About() {
             transition={{ delay: 0.2 }}
             className="mt-6 max-w-xl text-muted-foreground leading-relaxed"
           >
-            At PIPA Jewellery, every piece is crafted to celebrate elegance,
-            confidence, and timeless beauty. Inspired by modern femininity and
-            luxury aesthetics, our collections are designed to make every moment
-            shine — beautifully, and forever.
+            At PIPA Jewellery, every piece is crafted to celebrate elegance, confidence, and
+            timeless beauty. Inspired by modern femininity and luxury aesthetics, our collections
+            are designed to make every moment shine — beautifully, and forever.
           </motion.p>
 
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6">
             {stats.map((s) => (
               <div key={s.l}>
                 <p className="font-display text-4xl text-gradient-gold">{s.v}</p>
-                <p className="mt-1 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">{s.l}</p>
+                <p className="mt-1 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+                  {s.l}
+                </p>
               </div>
             ))}
           </div>
