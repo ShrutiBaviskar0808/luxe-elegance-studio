@@ -72,18 +72,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pipa App" },
-      { name: "description", content: "Pipa Generated Project" },
-      { name: "author", content: "Pipa" },
-      { property: "og:title", content: "Pipa App" },
-      { property: "og:description", content: "Pipa Generated Project" },
+      { title: "PIPA Jewellery" },
+      {
+        name: "description",
+        content: "Hand-finished luxury fine jewellery designed to elevate every moment.",
+      },
+      { name: "author", content: "PIPA Jewellery" },
+      { property: "og:title", content: "PIPA Jewellery" },
+      {
+        property: "og:description",
+        content: "Hand-finished luxury fine jewellery designed to elevate every moment.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Pipa" },
-      { name: "twitter:title", content: "Pipa App" },
-      { name: "twitter:description", content: "Pipa Generated Project" },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3c9fb006-9133-4bd4-b246-9952467f7e83/id-preview-69376aeb--a7e71c94-fdb0-443a-b153-4ea10e67ede1.lovable.app-1778783633394.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3c9fb006-9133-4bd4-b246-9952467f7e83/id-preview-69376aeb--a7e71c94-fdb0-443a-b153-4ea10e67ede1.lovable.app-1778783633394.png" },
+      { name: "twitter:site", content: "@PIPAJewellery" },
+      { name: "twitter:title", content: "PIPA Jewellery" },
+      {
+        name: "twitter:description",
+        content: "Hand-finished luxury fine jewellery designed to elevate every moment.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/012eec02-0bc3-44f8-90b0-43a8cbc6dcec/id-preview-4aa4d907--a7e71c94-fdb0-443a-b153-4ea10e67ede1.lovable.app-1778780764218.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/012eec02-0bc3-44f8-90b0-43a8cbc6dcec/id-preview-4aa4d907--a7e71c94-fdb0-443a-b153-4ea10e67ede1.lovable.app-1778780764218.png",
+      },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
