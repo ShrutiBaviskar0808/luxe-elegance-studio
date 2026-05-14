@@ -7,10 +7,10 @@ import { useShop } from "@/context/ShopContext";
 const links = [
   { label: "Home", href: "#home", category: "All" as const },
   { label: "New Arrival", href: "#new-arrival", category: "All" as const },
-  { label: "Collections", href: "#collections", category: "All" as const },
   { label: "Earrings", href: "#new-arrival", category: "Earrings" as const },
   { label: "Rings", href: "#new-arrival", category: "Rings" as const },
   { label: "Bracelets", href: "#new-arrival", category: "Bracelets" as const },
+  { label: "Collections", href: "#collections", category: "All" as const },
   { label: "About Us", href: "#about", category: "All" as const },
   { label: "Reach Out", href: "#reach-out", category: "All" as const },
 ];
@@ -46,55 +46,55 @@ export default function Navbar() {
 
   return (
     <motion.header
-      initial={{ y: -40, opacity: 0 }}
+      initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
       className="sticky top-0 z-50"
     >
       <div
         className={`transition-all duration-500 ${
-          scrolled ? "glass shadow-soft" : "bg-background/70 backdrop-blur-sm"
+          scrolled ? "glass shadow-soft" : "bg-background/85 backdrop-blur-md"
         }`}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between py-4">
-          <a
-            href="#home"
-            onClick={(e) => handleNav(e, { href: "#home", category: "All" })}
-            className="flex items-center gap-2"
-          >
-            <Logo />
-          </a>
-
-          <nav className="hidden lg:flex items-center gap-7">
-            {links.slice(0, 6).map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={(e) => handleNav(e, l)}
-                className="group relative text-[11px] uppercase tracking-[0.25em] text-foreground/80 hover:text-foreground transition-colors"
-              >
-                {l.label}
-                <span className="pointer-events-none absolute -bottom-1 left-0 h-px w-0 bg-gradient-gold transition-all duration-500 group-hover:w-full" />
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-1 sm:gap-2">
+        {/* Top row: search | logo | actions */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 grid grid-cols-3 items-center py-4">
+          {/* LEFT */}
+          <div className="flex items-center gap-1 justify-self-start">
             <button
               aria-label="Search"
               onClick={() => setSearchOpen(true)}
               className="p-2.5 rounded-full hover:bg-foreground/5 transition"
             >
-              <Search className="h-4 w-4" />
+              <Search className="h-[18px] w-[18px]" />
             </button>
+            <button
+              aria-label="Menu"
+              className="lg:hidden p-2.5 rounded-full hover:bg-foreground/5"
+              onClick={() => setOpen((o) => !o)}
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
+
+          {/* CENTER LOGO */}
+          <a
+            href="#home"
+            onClick={(e) => handleNav(e, { href: "#home", category: "All" })}
+            className="justify-self-center"
+          >
+            <Logo />
+          </a>
+
+          {/* RIGHT */}
+          <div className="flex items-center gap-1 justify-self-end">
             <button
               aria-label="Wishlist"
               onClick={() => setWishlistOpen(true)}
-              className="relative hidden sm:grid p-2.5 place-items-center rounded-full hover:bg-foreground/5 transition"
+              className="relative p-2.5 rounded-full hover:bg-foreground/5 transition"
             >
-              <Heart className="h-4 w-4" />
+              <Heart className="h-[18px] w-[18px]" />
               {wishlist.length > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 h-4 w-4 grid place-items-center rounded-full bg-foreground text-background text-[9px] font-medium">
+                <span className="absolute -top-0.5 -right-0.5 h-4 w-4 grid place-items-center rounded-full bg-foreground text-background text-[9px]">
                   {wishlist.length}
                 </span>
               )}
@@ -104,7 +104,7 @@ export default function Navbar() {
               onClick={() => setCartOpen(true)}
               className="relative p-2.5 rounded-full hover:bg-foreground/5 transition"
             >
-              <ShoppingBag className="h-4 w-4" />
+              <ShoppingBag className="h-[18px] w-[18px]" />
               <AnimatePresence>
                 {cartCount > 0 && (
                   <motion.span
@@ -112,23 +112,30 @@ export default function Navbar() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
-                    className="absolute -top-0.5 -right-0.5 h-4 w-4 grid place-items-center rounded-full bg-gradient-gold text-onyx text-[9px] font-medium"
+                    className="absolute -top-0.5 -right-0.5 h-4 w-4 grid place-items-center rounded-full bg-gradient-gold text-onyx text-[9px]"
                   >
                     {cartCount}
                   </motion.span>
                 )}
               </AnimatePresence>
             </button>
-
-            <button
-              aria-label="Menu"
-              className="lg:hidden ml-1 p-2.5 rounded-full hover:bg-foreground/5"
-              onClick={() => setOpen((o) => !o)}
-            >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
           </div>
         </div>
+
+        {/* Bottom nav row (desktop) */}
+        <nav className="hidden lg:flex items-center justify-center gap-9 border-t border-foreground/10 py-3">
+          {links.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              onClick={(e) => handleNav(e, l)}
+              className="group relative text-[11px] uppercase tracking-[0.3em] text-foreground/75 hover:text-foreground transition-colors"
+            >
+              {l.label}
+              <span className="pointer-events-none absolute -bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-gradient-gold transition-all duration-500 group-hover:w-full" />
+            </a>
+          ))}
+        </nav>
       </div>
 
       <AnimatePresence>
