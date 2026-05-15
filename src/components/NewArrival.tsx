@@ -38,9 +38,9 @@ export default function NewArrival() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="mt-3 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-balance"
+              className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl leading-[0.95] text-balance"
             >
-              Pieces of <em className="not-italic text-gradient-gold">quiet luxury</em>.
+              New <em className="not-italic text-gradient-gold">Arrivals</em>
             </motion.h2>
           </div>
           <a

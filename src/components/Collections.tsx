@@ -49,15 +49,11 @@ export default function Collections() {
       <div className="pointer-events-none absolute -top-32 left-1/3 h-[420px] w-[420px] rounded-full bg-champagne/40 blur-[140px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="max-w-3xl mb-14">
+        <div className="max-w-3xl mb-12 text-center mx-auto">
           <p className="text-xs uppercase tracking-[0.35em] text-gold">Curated Edits</p>
-          <h2 className="mt-3 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-balance">
-            The Maison <em className="not-italic text-gradient-gold">collections</em>.
+          <h2 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl leading-[0.95] text-balance">
+            Shop by <em className="not-italic text-gradient-gold">Category</em>
           </h2>
-          <p className="mt-5 text-muted-foreground max-w-xl">
-            Four signature edits — each conceived in our atelier and refined over months of
-            stone-setting, polishing, and patient craft.
-          </p>
         </div>
 
         <div className="grid gap-5 lg:gap-6 grid-cols-1 lg:grid-cols-12 auto-rows-[260px] lg:auto-rows-[280px]">
