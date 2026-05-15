@@ -19,24 +19,13 @@ export default function PromoBanner() {
             </p>
             <h3 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl leading-[0.95] text-balance relative">
               Up to <em className="not-italic text-gradient-gold">20% off</em>
-              <br /> our most loved pieces.
             </h3>
-            <p className="mt-5 max-w-md text-ivory/70 relative">
-              Discover handpicked silhouettes from the PIPA atelier — designed to be worn, gifted,
-              and treasured this season.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3 relative">
+            <div className="mt-8 relative">
               <a
                 href="#new-arrival"
                 className="shine inline-flex items-center gap-3 rounded-full bg-gradient-gold text-onyx px-7 py-3.5 text-xs uppercase tracking-[0.25em] font-medium shadow-glow"
               >
                 Shop the edit <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#collections"
-                className="inline-flex items-center gap-3 rounded-full border border-ivory/25 px-7 py-3.5 text-xs uppercase tracking-[0.25em] hover:border-gold hover:text-gold transition"
-              >
-                View collections
               </a>
             </div>
           </div>
