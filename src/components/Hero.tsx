@@ -49,24 +49,16 @@ export default function Hero() {
               PIPA Jewellery
             </p>
             <h1 className="mt-5 font-display text-[clamp(2.4rem,6vw,5rem)] leading-[1.02] tracking-tight">
-              Luxury Jewellery
-              <br />
-              <em className="not-italic text-gradient-gold">Collection</em>
+              Luxury <em className="not-italic text-gradient-gold">Collection</em>
             </h1>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8">
               <a
                 href="#new-arrival"
                 className="group inline-flex items-center gap-2 rounded-full bg-ivory text-onyx px-7 py-3.5 text-[11px] uppercase tracking-[0.28em] hover:bg-gold hover:text-onyx transition shadow-luxe"
               >
                 Shop Now
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-              <a
-                href="#collections"
-                className="inline-flex items-center gap-2 rounded-full border border-ivory/60 text-ivory px-7 py-3.5 text-[11px] uppercase tracking-[0.28em] hover:bg-ivory hover:text-onyx transition"
-              >
-                Explore Collection
               </a>
             </div>
           </motion.div>
