@@ -8,7 +8,7 @@ export default function Trending() {
       <div className="pointer-events-none absolute top-1/2 -right-40 h-[460px] w-[460px] rounded-full bg-gold/20 blur-[150px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-12">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -22,13 +22,10 @@ export default function Trending() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-3 font-display text-5xl sm:text-6xl leading-[0.95] text-balance"
+            className="mt-3 font-display text-4xl sm:text-5xl leading-[0.95] text-balance"
           >
-            The pieces every <em className="not-italic text-gradient-gold">muse</em> is wearing.
+            Most <em className="not-italic text-gradient-gold">Loved</em>
           </motion.h2>
-          <p className="mt-5 text-muted-foreground">
-            Curated weekly. Crafted to be the talking point of every room you walk into.
-          </p>
         </div>
 
         <div className="grid gap-6 sm:gap-7 grid-cols-2 lg:grid-cols-4">
