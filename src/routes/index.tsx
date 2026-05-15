@@ -8,7 +8,7 @@ import NewArrival from "@/components/NewArrival";
 import PromoBanner from "@/components/PromoBanner";
 import BestSellers from "@/components/BestSellers";
 import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
+
 import InstagramFeed from "@/components/InstagramFeed";
 import ReachOut from "@/components/ReachOut";
 import Footer from "@/components/Footer";
