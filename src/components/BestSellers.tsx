@@ -24,9 +24,9 @@ export default function BestSellers() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="mt-3 font-display text-5xl sm:text-6xl leading-[0.95] text-balance"
+              className="mt-3 font-display text-4xl sm:text-5xl leading-[0.95] text-balance"
             >
-              Loved by every <em className="not-italic text-gradient-gold">PIPA</em> woman.
+              Best <em className="not-italic text-gradient-gold">Sellers</em>
             </motion.h2>
           </div>
           <a
