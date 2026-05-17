@@ -9,7 +9,7 @@ export default function ReachOut() {
   return (
     <section
       id="reach-out"
-      className="relative py-28 sm:py-36 bg-gradient-onyx text-ivory overflow-hidden"
+      className="relative py-14 sm:py-12 bg-gradient-onyx text-ivory overflow-hidden"
     >
       <div className="pointer-events-none absolute -top-40 left-1/4 h-[500px] w-[500px] rounded-full bg-gold/30 blur-[160px]" />
       <div className="pointer-events-none absolute -bottom-32 right-0 h-[460px] w-[460px] rounded-full bg-bronze/40 blur-[160px]" />
@@ -26,7 +26,7 @@ export default function ReachOut() {
           </p>
         </div>
 
-        <div className="mt-16 grid lg:grid-cols-12 gap-8">
+        <div className="mt-10 grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-7">
             <ContactForm />
           </div>

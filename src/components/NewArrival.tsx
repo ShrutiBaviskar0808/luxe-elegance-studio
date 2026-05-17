@@ -13,7 +13,7 @@ export default function NewArrival() {
   }, [products, category]);
 
   return (
-    <section id="new-arrival" className="relative bg-gradient-ivory scroll-mt-24 pt-20 sm:pt-28">
+    <section id="new-arrival" className="relative bg-gradient-ivory scroll-mt-24 pt-12 sm:pt-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="text-center max-w-xl mx-auto">
           <motion.p

@@ -21,7 +21,7 @@ const reviews = [
 
 export default function Testimonials() {
   return (
-    <section className="relative py-28 sm:py-32 bg-background overflow-hidden">
+    <section className="relative py-14 sm:py-12 bg-background overflow-hidden">
       <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-[400px] w-[400px] rounded-full bg-champagne/40 blur-[140px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">

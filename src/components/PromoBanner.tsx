@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function PromoBanner() {
   return (
-    <section className="relative py-20 sm:py-28 bg-background overflow-hidden">
+    <section className="relative py-12 sm:py-16 bg-background overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
