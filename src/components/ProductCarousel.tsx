@@ -117,7 +117,7 @@ export default function ProductCarousel({
               {products.map((p, i) => (
                 <div
                   key={p.id}
-                  className="shrink-0 grow-0 px-2 basis-[72%] xs:basis-[60%] sm:basis-[45%] md:basis-[33%] lg:basis-[25%] xl:basis-[22%]"
+                  className="shrink-0 grow-0 px-2 basis-[72%] sm:basis-[45%] md:basis-[33%] lg:basis-[25%] xl:basis-[22%]"
                 >
                   <ProductCard p={p} index={i} />
                 </div>
