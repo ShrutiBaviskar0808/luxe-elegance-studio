@@ -57,6 +57,7 @@ function Index() {
         <NewArrival />
         <PromoBanner />
         <BestSellers />
+        <CategoryShowcase />
         <About />
         
         <InstagramFeed />
