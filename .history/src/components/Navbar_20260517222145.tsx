@@ -4,8 +4,6 @@ import { Menu, X, Search, ShoppingBag, Heart, ChevronDown, ChevronRight } from "
 import Logo from "./Logo";
 import { useShop } from "@/context/ShopContext";
 
-// cSpell:ignore Oxidish Kada Payal
-
 type Cat = "All" | "Earrings" | "Rings" | "Bracelets" | "Necklaces";
 
 const links = [

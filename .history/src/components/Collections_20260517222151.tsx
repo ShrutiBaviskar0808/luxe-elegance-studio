@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useShop } from "@/context/ShopContext";
 
@@ -97,5 +97,3 @@ export default function Collections() {
     </section>
   );
 }
-
-

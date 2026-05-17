@@ -39,7 +39,7 @@ export default function Hero() {
 
         {/* content overlay removed */}
 
-        {/* slide indicators */}
+        {/* slide indicators */
         <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2">
           {slides.map((_, k) => (
             <button

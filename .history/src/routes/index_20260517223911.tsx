@@ -48,7 +48,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <ShopProvider>
-      <RazorpayScriptLoader />
       <main className="bg-background text-foreground">
         <AnnouncementBar />
         <Navbar />

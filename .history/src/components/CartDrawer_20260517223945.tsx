@@ -4,13 +4,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { useShop, getProductById } from "@/context/ShopContext";
 
 export default function CartDrawer() {
-  const navigate = useNavigate();
   const { cartOpen, setCartOpen, cart, setQty, removeFromCart, cartSubtotal } = useShop();
-
-  const handleCheckout = () => {
-    setCartOpen(false);
-    navigate({ to: "/checkout" });
-  };
 
   const wa = `https://wa.me/919999999999?text=${encodeURIComponent(
     "Hi PIPA Jewellery, I'd like to order:\n" +
@@ -33,14 +27,14 @@ export default function CartDrawer() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={() => setCartOpen(false)}
-            className="fixed inset-0 z-80 bg-onyx/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[80] bg-onyx/60 backdrop-blur-sm"
           />
           <motion.aside
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", ease: [0.32, 0.72, 0, 1], duration: 0.45 }}
-            className="fixed right-0 top-0 z-81 h-full w-full sm:w-110 bg-background shadow-luxe flex flex-col"
+            className="fixed right-0 top-0 z-[81] h-full w-full sm:w-[440px] bg-background shadow-luxe flex flex-col"
             aria-label="Shopping bag"
           >
             <header className="flex items-center justify-between px-6 py-5 border-b border-foreground/10">
@@ -134,7 +128,7 @@ export default function CartDrawer() {
             </div>
 
             {cart.length > 0 && (
-              <footer className="border-t border-foreground/10 px-6 py-5 space-y-3">
+              <footer className="border-t border-foreground/10 px-6 py-5 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
                     Subtotal
@@ -146,17 +140,11 @@ export default function CartDrawer() {
                 <p className="text-xs text-muted-foreground">
                   Shipping & taxes calculated at checkout. Complimentary gift packaging included.
                 </p>
-                <button
-                  onClick={handleCheckout}
-                  className="shine w-full rounded-full bg-linear-to-r from-onyx to-foreground text-background py-3 text-[11px] uppercase tracking-[0.3em] hover:shadow-lg transition font-semibold"
-                >
-                  Secure Checkout
-                </button>
                 <a
                   href={wa}
                   target="_blank"
                   rel="noreferrer"
-                  className="shine block text-center rounded-full border-2 border-foreground text-foreground py-3 text-[11px] uppercase tracking-[0.3em] hover:bg-foreground/5 transition"
+                  className="shine block text-center rounded-full bg-foreground text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:opacity-90 transition"
                 >
                   Checkout via WhatsApp
                 </a>

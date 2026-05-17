@@ -4,8 +4,6 @@ import { Menu, X, Search, ShoppingBag, Heart, ChevronDown, ChevronRight } from "
 import Logo from "./Logo";
 import { useShop } from "@/context/ShopContext";
 
-// cSpell:ignore Oxidish Kada Payal
-
 type Cat = "All" | "Earrings" | "Rings" | "Bracelets" | "Necklaces";
 
 const links = [
@@ -110,7 +108,7 @@ export default function Navbar() {
               onClick={() => setSearchOpen(true)}
               className="p-2.5 rounded-full hover:bg-foreground/5 transition"
             >
-              <Search className="h-4.5 w-4.5" />
+              <Search className="h-[18px] w-[18px]" />
             </button>
             <button
               aria-label="Menu"
@@ -135,7 +133,7 @@ export default function Navbar() {
               onClick={() => setWishlistOpen(true)}
               className="relative p-2.5 rounded-full hover:bg-foreground/5 transition"
             >
-              <Heart className="h-4.5 w-4.5" />
+              <Heart className="h-[18px] w-[18px]" />
               {wishlist.length > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 h-4 w-4 grid place-items-center rounded-full bg-foreground text-background text-[9px]">
                   {wishlist.length}
@@ -147,7 +145,7 @@ export default function Navbar() {
               onClick={() => setCartOpen(true)}
               className="relative p-2.5 rounded-full hover:bg-foreground/5 transition"
             >
-              <ShoppingBag className="h-4.5 w-4.5" />
+              <ShoppingBag className="h-[18px] w-[18px]" />
               <AnimatePresence>
                 {cartCount > 0 && (
                   <motion.span
@@ -258,7 +256,7 @@ export default function Navbar() {
                       </motion.div>
                     ))}
                   </div>
-                  <div className="px-7 py-3 border-t border-foreground/10 bg-foreground/2 flex items-center justify-between">
+                  <div className="px-7 py-3 border-t border-foreground/10 bg-foreground/[0.02] flex items-center justify-between">
                     <span className="text-[10px] uppercase tracking-[0.32em] text-foreground/55">
                       Hand-finished · Made to Last
                     </span>
@@ -313,7 +311,7 @@ export default function Navbar() {
                       <div key={g.title} className="rounded-lg overflow-hidden">
                         <button
                           onClick={() => setMobileColOpen(isOpen ? null : g.title)}
-                          className="w-full flex items-center justify-between px-3 py-2.5 text-[12px] uppercase tracking-[0.22em] bg-foreground/3 hover:bg-foreground/6 transition"
+                          className="w-full flex items-center justify-between px-3 py-2.5 text-[12px] uppercase tracking-[0.22em] bg-foreground/[0.03] hover:bg-foreground/[0.06] transition"
                         >
                           <span>{g.title}</span>
                           <ChevronDown
@@ -359,7 +357,7 @@ export default function Navbar() {
               ))}
 
               <button
-                onClick={(e) => handleNav(e, { href: "#collections", category: "All" })}
+                onClick={(e) => handleNav(e, { href: "#new-arrival", category: "All" })}
                 className="mt-4 rounded-full bg-foreground text-background text-xs uppercase tracking-[0.25em] px-5 py-3"
               >
                 Shop Collection
