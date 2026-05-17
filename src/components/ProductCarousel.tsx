@@ -61,7 +61,7 @@ export default function ProductCarousel({
   return (
     <section
       id={id}
-      className={`relative py-20 sm:py-28 overflow-hidden scroll-mt-24 ${bgMap[bg]}`}
+      className={`relative py-12 sm:py-16 overflow-hidden scroll-mt-24 ${bgMap[bg]}`}
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex items-end justify-between gap-4 mb-8 sm:mb-10">

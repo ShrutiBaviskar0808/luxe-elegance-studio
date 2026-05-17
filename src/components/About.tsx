@@ -9,7 +9,7 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 sm:py-32 bg-gradient-ivory overflow-hidden">
+    <section id="about" className="relative py-14 sm:py-12 bg-gradient-ivory overflow-hidden">
       <div className="pointer-events-none absolute top-0 right-0 h-[420px] w-[420px] rounded-full bg-gold/20 blur-[140px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 grid lg:grid-cols-12 gap-12 items-center">

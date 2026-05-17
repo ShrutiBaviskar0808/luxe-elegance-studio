@@ -12,7 +12,7 @@ const shots = [
 
 export default function InstagramFeed() {
   return (
-    <section className="relative py-24 sm:py-28 bg-gradient-ivory overflow-hidden">
+    <section className="relative py-12 sm:py-16 bg-gradient-ivory overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="text-xs uppercase tracking-[0.35em] text-gold">@pipa.jewellery</p>
