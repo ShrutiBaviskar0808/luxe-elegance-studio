@@ -3,18 +3,13 @@ import { X, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useShop, getProductById } from "@/context/ShopContext";
 
 export default function CartDrawer() {
-  const { cartOpen, setCartOpen, cart, setQty, removeFromCart, cartSubtotal } = useShop();
+  const { cartOpen, setCartOpen, cart, setQty, removeFromCart, cartSubtotal, setCheckoutOpen } =
+    useShop();
 
-  const wa = `https://wa.me/919999999999?text=${encodeURIComponent(
-    "Hi PIPA Jewellery, I'd like to order:\n" +
-      cart
-        .map((c) => {
-          const p = getProductById(c.id);
-          return `• ${p?.name} × ${c.qty} — ₹${((p?.price ?? 0) * c.qty).toLocaleString()}`;
-        })
-        .join("\n") +
-      `\nSubtotal: ₹${cartSubtotal.toLocaleString()}`,
-  )}`;
+  const startCheckout = () => {
+    setCartOpen(false);
+    setTimeout(() => setCheckoutOpen(true), 200);
+  };
 
   return (
     <AnimatePresence>
@@ -139,14 +134,12 @@ export default function CartDrawer() {
                 <p className="text-xs text-muted-foreground">
                   Shipping & taxes calculated at checkout. Complimentary gift packaging included.
                 </p>
-                <a
-                  href={wa}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shine block text-center rounded-full bg-foreground text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:opacity-90 transition"
+                <button
+                  onClick={startCheckout}
+                  className="shine block w-full text-center rounded-full bg-foreground text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gradient-gold hover:text-onyx transition-all shadow-luxe hover:shadow-glow"
                 >
-                  Checkout via WhatsApp
-                </a>
+                  Secure Checkout →
+                </button>
               </footer>
             )}
           </motion.aside>
