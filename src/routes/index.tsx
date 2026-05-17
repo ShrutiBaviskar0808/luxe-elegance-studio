@@ -7,6 +7,7 @@ import Collections from "@/components/Collections";
 import NewArrival from "@/components/NewArrival";
 import PromoBanner from "@/components/PromoBanner";
 import BestSellers from "@/components/BestSellers";
+import CategoryShowcase from "@/components/CategoryShowcase";
 import About from "@/components/About";
 
 import InstagramFeed from "@/components/InstagramFeed";
