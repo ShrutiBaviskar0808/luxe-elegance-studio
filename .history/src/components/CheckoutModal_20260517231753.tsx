@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ShieldCheck, Loader2, CheckCircle2, XCircle, Lock } from "lucide-react";
@@ -17,7 +16,6 @@ export default function CheckoutModal() {
   const shipping = cartSubtotal > 4999 ? 0 : 149;
   const total = cartSubtotal + shipping;
 
-   
   const onChange = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
@@ -76,14 +74,14 @@ export default function CheckoutModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={close}
-            className="fixed inset-0 z-90 bg-onyx/70 backdrop-blur-md"
+            className="fixed inset-0 z-[90] bg-onyx/70 backdrop-blur-md"
           />
           <motion.div
             initial={{ opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.98 }}
             transition={{ type: "spring", damping: 26, stiffness: 240 }}
-            className="fixed inset-0 z-91 flex items-end sm:items-center justify-center p-0 sm:p-6 pointer-events-none"
+            className="fixed inset-0 z-[91] flex items-end sm:items-center justify-center p-0 sm:p-6 pointer-events-none"
           >
             <div className="pointer-events-auto w-full sm:max-w-5xl max-h-[95vh] sm:max-h-[90vh] bg-background rounded-t-3xl sm:rounded-3xl shadow-luxe overflow-hidden flex flex-col">
               <header className="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 border-b border-foreground/10">
