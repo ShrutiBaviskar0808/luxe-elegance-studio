@@ -17,6 +17,7 @@ import CartDrawer from "@/components/CartDrawer";
 import WishlistDrawer from "@/components/WishlistDrawer";
 import SearchOverlay from "@/components/SearchOverlay";
 import QuickViewModal from "@/components/QuickViewModal";
+import CheckoutModal from "@/components/CheckoutModal";
 import { ShopProvider } from "@/context/ShopContext";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -68,6 +69,7 @@ function Index() {
       <CartDrawer />
       <WishlistDrawer />
       <QuickViewModal />
+      <CheckoutModal />
       <Toaster position="bottom-right" />
     </ShopProvider>
   );
