@@ -44,7 +44,7 @@ export default function Collections() {
   return (
     <section
       id="collections"
-      className="relative py-28 sm:py-36 bg-cream overflow-hidden scroll-mt-24"
+      className="relative py-14 sm:py-12 bg-cream overflow-hidden scroll-mt-24"
     >
       <div className="pointer-events-none absolute -top-32 left-1/3 h-105 w-105 rounded-full bg-champagne/40 blur-[140px]" />
 

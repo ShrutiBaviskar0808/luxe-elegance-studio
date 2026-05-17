@@ -30,7 +30,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 py-20 grid gap-12 lg:grid-cols-12">
+      <div className="mx-auto max-w-7xl px-6 py-12 grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <Logo tone="light" />
           <p className="mt-5 max-w-sm text-ivory/60 leading-relaxed">

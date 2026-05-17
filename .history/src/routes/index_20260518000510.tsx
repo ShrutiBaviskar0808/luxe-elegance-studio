@@ -1,7 +1,4 @@
-/* eslint-disable prettier/prettier */
-
 import { createFileRoute } from "@tanstack/react-router";
-
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -12,16 +9,14 @@ import PromoBanner from "@/components/PromoBanner";
 import BestSellers from "@/components/BestSellers";
 import CategoryShowcase from "@/components/CategoryShowcase";
 import About from "@/components/About";
+
 import InstagramFeed from "@/components/InstagramFeed";
 import ReachOut from "@/components/ReachOut";
 import Footer from "@/components/Footer";
-
 import CartDrawer from "@/components/CartDrawer";
 import WishlistDrawer from "@/components/WishlistDrawer";
 import SearchOverlay from "@/components/SearchOverlay";
 import QuickViewModal from "@/components/QuickViewModal";
-import CheckoutModal from "@/components/CheckoutModal";
-
 import { ShopProvider } from "@/context/ShopContext";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -29,22 +24,17 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      {
-        title: "PIPA Jewellery — Hand-finished Luxury Fine Jewellery",
-      },
+      { title: "PIPA Jewellery — Hand-finished Luxury Fine Jewellery" },
       {
         name: "description",
         content:
-          "PIPA Jewellery — handcrafted luxury fine jewellery designed to elevate every moment.",
+          "PIPA Jewellery — handcrafted luxury fine jewellery designed to elevate every moment. Discover new arrivals, bestsellers, and signature collections.",
       },
-      {
-        property: "og:title",
-        content: "PIPA Jewellery — Hand-finished Luxury Fine Jewellery",
-      },
+      { property: "og:title", content: "PIPA Jewellery — Hand-finished Luxury Fine Jewellery" },
       {
         property: "og:description",
         content:
-          "Timeless elegance crafted for every woman.",
+          "Timeless elegance crafted for every woman. Hand-finished fine jewellery from the PIPA atelier.",
       },
       {
         property: "og:image",
@@ -58,6 +48,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <ShopProvider>
+      <RazorpayScriptLoader />
       <main className="bg-background text-foreground">
         <AnnouncementBar />
         <Navbar />
@@ -69,17 +60,16 @@ function Index() {
         <BestSellers />
         <CategoryShowcase />
         <About />
+        
         <InstagramFeed />
         <ReachOut />
         <Footer />
       </main>
-
       <SearchOverlay />
       <CartDrawer />
       <WishlistDrawer />
       <QuickViewModal />
       <CheckoutModal />
-
       <Toaster position="bottom-right" />
     </ShopProvider>
   );

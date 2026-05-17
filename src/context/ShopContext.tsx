@@ -37,6 +37,9 @@ type ShopState = {
   setSearchOpen: (v: boolean) => void;
   quickView: Product | null;
   setQuickView: (p: Product | null) => void;
+  checkoutOpen: boolean;
+  setCheckoutOpen: (v: boolean) => void;
+  clearCart: () => void;
   // filter
   category: Category;
   setCategory: (c: Category) => void;
@@ -61,6 +64,7 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   const [wishlistOpen, setWishlistOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [quickView, setQuickView] = useState<Product | null>(null);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [category, setCategory] = useState<Category>("All");
 
   // hydrate from localStorage on mount (client only)
@@ -81,12 +85,12 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   // lock scroll when any overlay open
   useEffect(() => {
     if (typeof document === "undefined") return;
-    const lock = cartOpen || wishlistOpen || searchOpen || !!quickView;
+    const lock = cartOpen || wishlistOpen || searchOpen || !!quickView || checkoutOpen;
     document.body.style.overflow = lock ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [cartOpen, wishlistOpen, searchOpen, quickView]);
+  }, [cartOpen, wishlistOpen, searchOpen, quickView, checkoutOpen]);
 
   // ESC closes overlays
   useEffect(() => {
@@ -115,6 +119,8 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   const removeFromCart = useCallback((id: string) => {
     setCart((prev) => prev.filter((c) => c.id !== id));
   }, []);
+
+  const clearCart = useCallback(() => setCart([]), []);
 
   const setQty = useCallback((id: string, qty: number) => {
     setCart((prev) =>
@@ -166,6 +172,9 @@ export function ShopProvider({ children }: { children: ReactNode }) {
     setSearchOpen,
     quickView,
     setQuickView,
+    checkoutOpen,
+    setCheckoutOpen,
+    clearCart,
     category,
     setCategory,
   };

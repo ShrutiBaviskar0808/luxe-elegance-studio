@@ -1,8 +1,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import ProductCard from "./ProductCard";
 import { useShop } from "@/context/ShopContext";
+import ProductCarousel from "./ProductCarousel";
 
 const TABS = ["All", "Earrings", "Rings", "Necklaces", "Bracelets"] as const;
 
@@ -10,56 +9,40 @@ export default function NewArrival() {
   const { products, category, setCategory } = useShop();
 
   const list = useMemo(() => {
-    const filtered =
-      category === "All" ? products : products.filter((p) => p.category === category);
-    return filtered.slice(0, 9);
+    return category === "All" ? products : products.filter((p) => p.category === category);
   }, [products, category]);
 
   return (
-    <section
-      id="new-arrival"
-      className="relative py-28 sm:py-36 bg-gradient-ivory overflow-hidden scroll-mt-24"
-    >
-      <div className="pointer-events-none absolute top-1/3 -right-32 h-[480px] w-[480px] rounded-full bg-gold/20 blur-[140px]" />
-
-      <div className="relative mx-auto max-w-7xl px-6">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-xs uppercase tracking-[0.35em] text-gold"
-            >
-              The New Arrival
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl leading-[0.95] text-balance"
-            >
-              New <em className="not-italic text-gradient-gold">Arrivals</em>
-            </motion.h2>
-          </div>
-          <a
-            href="#collections"
-            className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.25em] hover:text-gold transition"
+    <section id="new-arrival" className="relative bg-gradient-ivory scroll-mt-24 pt-12 sm:pt-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="text-center max-w-xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-gold"
           >
-            View all collections
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+            The New Arrival
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.08 }}
+            className="mt-2 font-display text-3xl sm:text-4xl lg:text-5xl leading-[0.95]"
+          >
+            New <em className="not-italic text-gradient-gold">Arrivals</em>
+          </motion.h2>
         </div>
 
-        <div className="mb-10 flex flex-wrap gap-2">
+        <div className="mt-8 flex flex-wrap justify-center gap-2">
           {TABS.map((t) => {
             const active = category === t;
             return (
               <button
                 key={t}
                 onClick={() => setCategory(t)}
-                className={`rounded-full px-5 py-2.5 text-[10px] uppercase tracking-[0.28em] transition border ${
+                className={`rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] uppercase tracking-[0.28em] transition border ${
                   active
                     ? "bg-foreground text-background border-foreground shadow-soft"
                     : "border-foreground/15 hover:border-gold hover:text-gold"
@@ -70,19 +53,13 @@ export default function NewArrival() {
             );
           })}
         </div>
-
-        {list.length === 0 ? (
-          <p className="py-20 text-center text-muted-foreground">
-            No pieces in this edit yet — check back soon.
-          </p>
-        ) : (
-          <motion.div layout className="grid gap-6 sm:gap-8 grid-cols-2 lg:grid-cols-3">
-            {list.map((p, i) => (
-              <ProductCard key={p.id} p={p} index={i} />
-            ))}
-          </motion.div>
-        )}
       </div>
+
+      <ProductCarousel
+        key={category}
+        products={list}
+        bg="ivory"
+      />
     </section>
   );
 }
