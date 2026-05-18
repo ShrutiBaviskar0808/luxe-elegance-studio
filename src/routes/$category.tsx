@@ -39,11 +39,43 @@ export const Route = createFileRoute("/$category")({
     <div className="min-h-screen bg-background">
       <AnnouncementBar />
       <Navbar />
-      <div className="mx-auto max-w-3xl px-6 py-32 text-center">
-        <h1 className="font-display text-3xl">Collection not found</h1>
-        <Link to="/" className="mt-6 inline-block text-gold underline">
-          Back to home
-        </Link>
+      <div className="mx-auto max-w-7xl px-6 py-20 sm:py-28">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs uppercase tracking-[0.35em] text-gold">Collection not found</p>
+          <h1 className="mt-4 font-display text-3xl sm:text-5xl">Explore a real collection instead</h1>
+          <p className="mt-4 text-sm text-foreground/65">
+            The requested page slug does not match one of the luxury collection routes, so pick a
+            curated edit below.
+          </p>
+          <Link to="/" className="mt-6 inline-block text-gold underline">
+            Back to home
+          </Link>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          {(Object.entries(categorySlugs) as Array<[CategorySlug, (typeof categorySlugs)[CategorySlug]]>).map(
+            ([slug, data]) => (
+              <Link
+                key={slug}
+                to="/$category"
+                params={{ category: slug }}
+                className="group relative overflow-hidden rounded-[1.75rem] border border-foreground/10 bg-cream shadow-soft"
+              >
+                <img
+                  src={data.heroImage}
+                  alt={data.title}
+                  className="h-72 w-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-onyx/80 via-onyx/20 to-transparent" />
+                <div className="absolute inset-0 flex flex-col justify-end p-5 text-background">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-background/70">Collection</p>
+                  <h2 className="mt-2 font-display text-2xl">{data.title}</h2>
+                  <p className="mt-2 text-sm text-background/80">{data.description}</p>
+                </div>
+              </Link>
+            ),
+          )}
+        </div>
       </div>
       <Footer />
     </div>

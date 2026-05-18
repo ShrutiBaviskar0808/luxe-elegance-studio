@@ -48,6 +48,17 @@ const collections: MegaGroup[] = [
     tagline: "Curated boxes to gift",
     items: [{ label: "Additions", category: "All" }],
   },
+  {
+    title: "Additions",
+    tagline: "Accessories & layering",
+    items: [
+      { label: "Charms", category: "All" },
+      { label: "Mini Pendants", category: "All" },
+      { label: "Stacking Rings", category: "All" },
+      { label: "Ear Cuffs", category: "All" },
+      { label: "Layered Chains", category: "All" },
+    ],
+  },
 ];
 
 const tail = [
@@ -238,7 +249,7 @@ export default function Navbar() {
                 className="absolute left-1/2 top-full z-40 mt-3 w-[min(96vw,1040px)] -translate-x-1/2"
               >
                 <div className="rounded-2xl border border-foreground/10 bg-background/95 backdrop-blur-xl shadow-luxe overflow-hidden">
-                  <div className="grid grid-cols-3 divide-x divide-foreground/10">
+                  <div className="grid grid-cols-4 divide-x divide-foreground/10">
                     {collections.map((g, gi) => (
                       <motion.div
                         key={g.title}
