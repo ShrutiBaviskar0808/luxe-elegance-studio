@@ -87,10 +87,7 @@ export default function Navbar() {
   };
 
   const labelToSlug = (label: string) =>
-    label
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, "");
+    label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 
   const goCollection = (item: SubItem) => {
     setCategory(item.category);
