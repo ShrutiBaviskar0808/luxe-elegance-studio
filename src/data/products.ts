@@ -71,3 +71,42 @@ export const byCategory = {
   Necklaces: necklaces,
   Bracelets: bracelets,
 };
+
+// Slug-based collection mapping for dedicated category pages
+const has = (p: Product, ...keywords: string[]) =>
+  keywords.some((k) => p.name.toLowerCase().includes(k.toLowerCase()));
+
+export const categorySlugs = {
+  earrings: { title: "Earrings", products: earrings },
+  rings: { title: "Rings", products: rings },
+  chain: { title: "Chains & Necklaces", products: necklaces },
+  bracelet: {
+    title: "Bracelets",
+    products: bracelets.filter((p) => has(p, "Bracelet")),
+  },
+  bangles: {
+    title: "Bangles & Kada",
+    products: bracelets.filter((p) => has(p, "Bangle", "Kada", "Cuff")),
+  },
+  anklet: {
+    title: "Anklets",
+    products: bracelets.filter((p) => has(p, "Anklet")),
+  },
+  "hand-chain": {
+    title: "Hand Chains",
+    products: bracelets.filter((p) => has(p, "Hand Chain")),
+  },
+  payal: {
+    title: "Payal",
+    products: bracelets.filter((p) => has(p, "Anklet", "Payal")),
+  },
+  belt: { title: "Belts", products: [] as Product[] },
+  "necklace-set": { title: "Necklace Sets", products: necklaces },
+} as const;
+
+export type CategorySlug = keyof typeof categorySlugs;
+
+export const isCategorySlug = (s: string): s is CategorySlug =>
+  Object.prototype.hasOwnProperty.call(categorySlugs, s);
+
+export const getProductById = (id: string) => products.find((p) => p.id === id);
