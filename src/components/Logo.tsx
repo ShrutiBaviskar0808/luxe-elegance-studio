@@ -7,9 +7,14 @@ export default function Logo({
 }) {
   const text = tone === "dark" ? "text-foreground" : "text-ivory";
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+    <span className={`inline-flex items-center gap-1.5 sm:gap-2.5 min-w-0 ${className}`}>
       {/* Diamond mark */}
-      <svg viewBox="0 0 32 32" className="h-5 w-5" fill="none" aria-hidden>
+      <svg
+        viewBox="0 0 32 32"
+        className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0"
+        fill="none"
+        aria-hidden
+      >
         <defs>
           <linearGradient id="pipaGold" x1="0" x2="1" y1="0" y2="1">
             <stop offset="0%" stopColor="oklch(0.86 0.08 82)" />
@@ -24,7 +29,9 @@ export default function Logo({
           strokeWidth="1"
         />
       </svg>
-      <span className={`font-display text-xl sm:text-[1.45rem] tracking-[0.32em] ${text}`}>
+      <span
+        className={`font-display text-[0.78rem] xs:text-sm sm:text-[1.2rem] lg:text-[1.45rem] tracking-[0.2em] sm:tracking-[0.3em] whitespace-nowrap ${text}`}
+      >
         PIPA<span className="text-gold mx-0.5">·</span>JEWELLERY
       </span>
     </span>

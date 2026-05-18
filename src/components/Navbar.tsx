@@ -103,18 +103,18 @@ export default function Navbar() {
         }`}
       >
         {/* Top row */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 grid grid-cols-3 items-center py-4">
-          <div className="flex items-center gap-1 justify-self-start">
+        <div className="mx-auto max-w-7xl px-3 sm:px-6 flex items-center justify-between gap-2 py-3 sm:py-4">
+          <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
             <button
               aria-label="Search"
               onClick={() => setSearchOpen(true)}
-              className="p-2.5 rounded-full hover:bg-foreground/5 transition"
+              className="p-2 sm:p-2.5 rounded-full hover:bg-foreground/5 transition"
             >
-              <Search className="h-4.5 w-4.5" />
+              <Search className="h-4 w-4 sm:h-[1.125rem] sm:w-[1.125rem]" />
             </button>
             <button
               aria-label="Menu"
-              className="lg:hidden p-2.5 rounded-full hover:bg-foreground/5"
+              className="lg:hidden p-2 sm:p-2.5 rounded-full hover:bg-foreground/5"
               onClick={() => setOpen((o) => !o)}
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -124,18 +124,18 @@ export default function Navbar() {
           <a
             href="#home"
             onClick={(e) => handleNav(e, { href: "#home", category: "All" })}
-            className="justify-self-center"
+            className="min-w-0 flex justify-center overflow-hidden"
           >
             <Logo />
           </a>
 
-          <div className="flex items-center gap-1 justify-self-end">
+          <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
             <button
               aria-label="Wishlist"
               onClick={() => setWishlistOpen(true)}
-              className="relative p-2.5 rounded-full hover:bg-foreground/5 transition"
+              className="relative p-2 sm:p-2.5 rounded-full hover:bg-foreground/5 transition"
             >
-              <Heart className="h-4.5 w-4.5" />
+              <Heart className="h-4 w-4 sm:h-[1.125rem] sm:w-[1.125rem]" />
               {wishlist.length > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 h-4 w-4 grid place-items-center rounded-full bg-foreground text-background text-[9px]">
                   {wishlist.length}
@@ -145,9 +145,9 @@ export default function Navbar() {
             <button
               aria-label="Bag"
               onClick={() => setCartOpen(true)}
-              className="relative p-2.5 rounded-full hover:bg-foreground/5 transition"
+              className="relative p-2 sm:p-2.5 rounded-full hover:bg-foreground/5 transition"
             >
-              <ShoppingBag className="h-4.5 w-4.5" />
+              <ShoppingBag className="h-4 w-4 sm:h-[1.125rem] sm:w-[1.125rem]" />
               <AnimatePresence>
                 {cartCount > 0 && (
                   <motion.span
