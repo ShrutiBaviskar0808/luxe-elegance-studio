@@ -1,22 +1,38 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
 import AnnouncementBar from "@/components/AnnouncementBar";
-import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import {
-  categorySlugs,
-  isCategorySlug,
-  type CategoryProduct,
-  type CategorySlug,
-} from "@/data/categoryCollections";
+import Footer from "@/components/Footer";
+import ProductCard from "@/components/ProductCard";
+import { demoProducts } from "@/data/products";
+
+export const categorySlugs = {
+  "tarnish-jewellery": {
+    title: "Tarnish Jewellery",
+    products: demoProducts["Tarnish Jewellery"].subcategories.Earrings.concat(
+      demoProducts["Tarnish Jewellery"].subcategories.Bangles
+    ),
+  },
+  "oxidish-jewellery": {
+    title: "Oxidish Jewellery",
+    products: demoProducts["Oxidish Jewellery"].subcategories.Earrings,
+  },
+  "cuties-gift-hampers": {
+    title: "Cuties / Gift Hampers",
+    products: demoProducts["Cuties / Gift Hampers"].subcategories.Hampers,
+  },
+  additions: {
+    title: "Additions",
+    products: demoProducts["Additions"].subcategories.Charms,
+  },
+};
 
 export const Route = createFileRoute("/$category")({
   loader: ({ params }) => {
     if (!isCategorySlug(params.category)) throw notFound();
-    const slug = params.category as CategorySlug;
-    const data = categorySlugs[slug];
+    const data = categorySlugs[params.category];
     return { slug: params.category, title: data.title, products: data.products };
   },
   head: ({ loaderData }) => ({
@@ -48,17 +64,19 @@ export const Route = createFileRoute("/$category")({
 
 function CategoryPage() {
   const data = Route.useLoaderData();
-  const { title, products } = data;
+  const { title } = data;
+  const products = data.products as import("@/data/products").Product[];
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="bg-background text-foreground min-h-screen">
       <AnnouncementBar />
       <Navbar />
 
+      {/* Hero */}
       <section className="relative overflow-hidden border-b border-foreground/10 bg-cream">
-        <div className="mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-20 text-center">
           <nav className="mb-4 flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.3em] text-foreground/60">
-            <Link to="/" className="transition hover:text-foreground">
+            <Link to="/" className="hover:text-foreground transition">
               Home
             </Link>
             <ChevronRight className="h-3 w-3" />
@@ -68,17 +86,18 @@ function CategoryPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="font-display text-3xl tracking-tight sm:text-5xl"
+            className="font-display text-3xl sm:text-5xl tracking-tight"
           >
             <em className="not-italic text-gradient-gold">{title}</em>
           </motion.h1>
-          <p className="mt-3 text-xs tracking-wide text-foreground/60 sm:text-sm">
+          <p className="mt-3 text-xs sm:text-sm text-foreground/60 tracking-wide">
             {products.length} {products.length === 1 ? "piece" : "pieces"}
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-3 py-10 sm:px-6 sm:py-16">
+      {/* Grid */}
+      <section className="mx-auto max-w-7xl px-3 sm:px-6 py-10 sm:py-16">
         {products.length === 0 ? (
           <div className="py-20 text-center text-foreground/60">
             <p>New arrivals coming soon to this collection.</p>
@@ -90,9 +109,9 @@ function CategoryPage() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-            {products.map((product) => (
-              <CategoryCard key={product.name} product={product} />
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+            {products.map((p, i) => (
+              <ProductCard key={p.id} p={p} index={i} />
             ))}
           </div>
         )}
@@ -100,37 +119,5 @@ function CategoryPage() {
 
       <Footer />
     </main>
-  );
-}
-
-function CategoryCard({ product }: { product: CategoryProduct }) {
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55 }}
-      className="group overflow-hidden rounded-[1.25rem] bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-luxe sm:rounded-[1.75rem]"
-    >
-      <div className="relative aspect-[4/5] overflow-hidden bg-cream">
-        <img
-          src={product.image}
-          alt={product.name}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
-        />
-      </div>
-
-      <div className="p-3 sm:p-6">
-        <p className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground sm:text-[10px] sm:tracking-[0.3em]">
-          {product.material}
-        </p>
-        <h3 className="mt-1 line-clamp-2 font-serif text-sm leading-tight sm:mt-1.5 sm:text-2xl">
-          {product.name}
-        </h3>
-        <p className="mt-2 text-xs text-foreground/70 sm:text-sm">{product.description}</p>
-        <p className="mt-3 text-sm font-medium text-gold sm:text-base">{product.price}</p>
-      </div>
-    </motion.article>
   );
 }
