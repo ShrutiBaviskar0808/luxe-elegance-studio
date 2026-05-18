@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ChevronRight, Heart } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
@@ -53,6 +53,10 @@ function ProductPage() {
   const [activeImg, setActiveImg] = useState(product.image);
   const wished = isWished(product.id);
 
+  useEffect(() => {
+    setActiveImg(product.image);
+  }, [product.id, product.image]);
+
   const gallery = [product.image, product.image, product.image, product.image];
 
   return (
@@ -70,7 +74,10 @@ function ProductPage() {
         </nav>
       </div>
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-3 py-8 sm:px-6 sm:py-12 lg:grid-cols-2 lg:gap-14">
+      <section
+        key={product.id}
+        className="mx-auto grid max-w-7xl gap-8 px-3 py-8 sm:px-6 sm:py-12 lg:grid-cols-2 lg:gap-14"
+      >
         <div>
           <motion.div
             key={activeImg}
