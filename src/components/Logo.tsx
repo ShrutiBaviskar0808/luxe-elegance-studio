@@ -30,7 +30,7 @@ export default function Logo({
         />
       </svg>
       <span
-        className={`font-display text-[0.78rem] xs:text-sm sm:text-[1.2rem] lg:text-[1.45rem] tracking-[0.2em] sm:tracking-[0.3em] whitespace-nowrap ${text}`}
+        className={`font-display text-[0.62rem] xs:text-xs sm:text-[1.05rem] lg:text-[1.45rem] tracking-[0.14em] sm:tracking-[0.3em] whitespace-nowrap truncate ${text}`}
       >
         PIPA<span className="text-gold mx-0.5">·</span>JEWELLERY
       </span>
