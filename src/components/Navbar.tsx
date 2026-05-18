@@ -78,6 +78,13 @@ export default function Navbar() {
 
   const navigate = useNavigate();
 
+  const collectionRoutes: Record<string, string> = {
+    "Tarnish Jewellery": "tarnish-jewellery",
+    "Oxidish Jewellery": "oxidish-jewellery",
+    "Cuties / Gift Hampers": "cuties-gift-hampers",
+    Additions: "additions",
+  };
+
   const handleNav = (e: React.MouseEvent, l: { href: string; category: Cat }) => {
     e.preventDefault();
     setCategory(l.category);
@@ -86,17 +93,12 @@ export default function Navbar() {
     smoothScroll(l.href);
   };
 
-  const labelToSlug = (label: string) =>
-    label
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, "");
-
-  const goCollection = (item: SubItem) => {
-    setCategory(item.category);
+  const goCollection = (groupTitle: string) => {
+    const category = collectionRoutes[groupTitle] ?? "tarnish-jewellery";
     setOpen(false);
     setMegaOpen(false);
-    navigate({ to: "/$category", params: { category: labelToSlug(item.label) } });
+    setCategory("All");
+    navigate({ to: "/$category", params: { category } });
   };
 
   return (
@@ -248,14 +250,17 @@ export default function Navbar() {
                         <p className="text-[10px] uppercase tracking-[0.35em] text-foreground/45">
                           {g.tagline}
                         </p>
-                        <h4 className="mt-2 font-display text-lg tracking-tight text-gradient-gold">
+                        <button
+                          onClick={() => goCollection(g.title)}
+                          className="mt-2 block font-display text-lg tracking-tight text-gradient-gold"
+                        >
                           {g.title}
-                        </h4>
+                        </button>
                         <ul className="mt-5 space-y-1.5">
                           {g.items.map((it) => (
                             <li key={it.label}>
                               <button
-                                onClick={() => goCollection(it)}
+                                onClick={() => goCollection(g.title)}
                                 className="group/item w-full flex items-center justify-between rounded-md px-3 py-2 text-[13px] text-foreground/75 hover:bg-foreground/5 hover:text-foreground transition-colors"
                               >
                                 <span className="relative">
@@ -343,7 +348,7 @@ export default function Navbar() {
                               {g.items.map((it) => (
                                 <li key={it.label}>
                                   <button
-                                    onClick={() => goCollection(it)}
+                                    onClick={() => goCollection(g.title)}
                                     className="w-full text-left px-5 py-2.5 text-[13px] text-foreground/75 hover:text-foreground hover:bg-foreground/5 transition"
                                   >
                                     {it.label}
