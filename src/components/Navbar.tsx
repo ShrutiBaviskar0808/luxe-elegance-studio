@@ -76,6 +76,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const navigate = useNavigate();
+
   const handleNav = (e: React.MouseEvent, l: { href: string; category: Cat }) => {
     e.preventDefault();
     setCategory(l.category);
@@ -84,11 +86,14 @@ export default function Navbar() {
     smoothScroll(l.href);
   };
 
+  const labelToSlug = (label: string) =>
+    label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+
   const goCollection = (item: SubItem) => {
     setCategory(item.category);
     setOpen(false);
     setMegaOpen(false);
-    smoothScroll("#new-arrival");
+    navigate({ to: "/$category", params: { category: labelToSlug(item.label) } });
   };
 
   return (
@@ -103,29 +108,31 @@ export default function Navbar() {
           scrolled ? "glass shadow-soft" : "bg-background/85 backdrop-blur-md"
         }`}
       >
-        {/* Top row */}
-        <div className="mx-auto max-w-7xl px-3 sm:px-6 flex items-center justify-between gap-2 py-3 sm:py-4">
-          <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
+        {/* Top row — strict 3-zone layout: left icons | centered logo | right icons */}
+        <div className="mx-auto max-w-7xl px-2 sm:px-6 flex items-center gap-1 sm:gap-3 py-2.5 sm:py-4">
+          {/* Left zone */}
+          <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0 flex-1 min-w-0 justify-start">
             <button
               aria-label="Search"
               onClick={() => setSearchOpen(true)}
-              className="p-2 sm:p-2.5 rounded-full hover:bg-foreground/5 transition"
+              className="p-1.5 sm:p-2.5 rounded-full hover:bg-foreground/5 transition flex-shrink-0"
             >
               <Search className="h-4 w-4 sm:h-[1.125rem] sm:w-[1.125rem]" />
             </button>
             <button
               aria-label="Menu"
-              className="lg:hidden p-2 sm:p-2.5 rounded-full hover:bg-foreground/5"
+              className="lg:hidden p-1.5 sm:p-2.5 rounded-full hover:bg-foreground/5 flex-shrink-0"
               onClick={() => setOpen((o) => !o)}
             >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
           </div>
 
+          {/* Center logo */}
           <a
             href="#home"
             onClick={(e) => handleNav(e, { href: "#home", category: "All" })}
-            className="min-w-0 flex justify-center overflow-hidden"
+            className="flex-shrink min-w-0 flex justify-center overflow-hidden px-1"
           >
             <Logo />
           </a>
