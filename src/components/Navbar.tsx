@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, ShoppingBag, Heart, ChevronDown, ChevronRight } from "lucide-react";
+import { useNavigate } from "@tanstack/react-router";
 import Logo from "./Logo";
 import { useShop } from "@/context/ShopContext";
 
