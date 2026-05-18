@@ -7,7 +7,7 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import { getProductById, products as ALL } from "@/data/products";
+import { getProductById, products as ALL, type Product } from "@/data/products";
 import { useShop } from "@/context/ShopContext";
 
 export const Route = createFileRoute("/product/$id")({
