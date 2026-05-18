@@ -16,36 +16,18 @@ import InstagramFeed from "@/components/InstagramFeed";
 import ReachOut from "@/components/ReachOut";
 import Footer from "@/components/Footer";
 
-import CartDrawer from "@/components/CartDrawer";
-import WishlistDrawer from "@/components/WishlistDrawer";
-import SearchOverlay from "@/components/SearchOverlay";
-import QuickViewModal from "@/components/QuickViewModal";
-import CheckoutModal from "@/components/CheckoutModal";
-
-import { ShopProvider } from "@/context/ShopContext";
-import { Toaster } from "@/components/ui/sonner";
-
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      {
-        title: "PIPA Jewellery — Hand-finished Luxury Fine Jewellery",
-      },
+      { title: "PIPA Jewellery — Hand-finished Luxury Fine Jewellery" },
       {
         name: "description",
         content:
           "PIPA Jewellery — handcrafted luxury fine jewellery designed to elevate every moment.",
       },
-      {
-        property: "og:title",
-        content: "PIPA Jewellery — Hand-finished Luxury Fine Jewellery",
-      },
-      {
-        property: "og:description",
-        content:
-          "Timeless elegance crafted for every woman.",
-      },
+      { property: "og:title", content: "PIPA Jewellery — Hand-finished Luxury Fine Jewellery" },
+      { property: "og:description", content: "Timeless elegance crafted for every woman." },
       {
         property: "og:image",
         content:
@@ -57,30 +39,20 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <ShopProvider>
-      <main className="bg-background text-foreground">
-        <AnnouncementBar />
-        <Navbar />
-        <Hero />
-        <Trending />
-        <Collections />
-        <NewArrival />
-        <PromoBanner />
-        <BestSellers />
-        <CategoryShowcase />
-        <About />
-        <InstagramFeed />
-        <ReachOut />
-        <Footer />
-      </main>
-
-      <SearchOverlay />
-      <CartDrawer />
-      <WishlistDrawer />
-      <QuickViewModal />
-      <CheckoutModal />
-
-      <Toaster position="bottom-right" />
-    </ShopProvider>
+    <main className="bg-background text-foreground">
+      <AnnouncementBar />
+      <Navbar />
+      <Hero />
+      <Trending />
+      <Collections />
+      <NewArrival />
+      <PromoBanner />
+      <BestSellers />
+      <CategoryShowcase />
+      <About />
+      <InstagramFeed />
+      <ReachOut />
+      <Footer />
+    </main>
   );
 }
