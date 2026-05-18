@@ -13,6 +13,7 @@ const badgeColor: Record<string, string> = {
 
 export default function ProductCard({ p, index = 0 }: { p: Product; index?: number }) {
   const { addToCart, toggleWishlist, isWished, setQuickView, setCartOpen } = useShop();
+  const navigate = useNavigate();
   const wished = isWished(p.id);
 
   return (
@@ -21,14 +22,14 @@ export default function ProductCard({ p, index = 0 }: { p: Product; index?: numb
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.65, delay: index * 0.06, ease: "easeOut" }}
-      className="group relative rounded-[1.75rem] overflow-hidden bg-card shadow-soft hover:shadow-luxe transition-all duration-500 hover:-translate-y-1.5"
+      className="group relative rounded-[1.25rem] sm:rounded-[1.75rem] overflow-hidden bg-card shadow-soft hover:shadow-luxe transition-all duration-500 hover:-translate-y-1.5"
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-cream">
         <button
           type="button"
-          onClick={() => setQuickView(p)}
+          onClick={() => navigate({ to: "/product/$id", params: { id: p.id } })}
           className="absolute inset-0 z-[1]"
-          aria-label={`Quick view ${p.name}`}
+          aria-label={`View ${p.name}`}
         />
         <img
           src={p.image}
