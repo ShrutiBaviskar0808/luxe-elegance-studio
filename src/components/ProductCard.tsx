@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Heart, Eye, ShoppingBag } from "lucide-react";
+import { useNavigate } from "@tanstack/react-router";
 import type { Product } from "@/data/products";
 import { useShop } from "@/context/ShopContext";
 
