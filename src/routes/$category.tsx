@@ -42,7 +42,9 @@ export const Route = createFileRoute("/$category")({
 });
 
 function CategoryPage() {
-  const { title, products } = Route.useLoaderData();
+  const data = Route.useLoaderData();
+  const { title } = data;
+  const products = data.products as import("@/data/products").Product[];
 
   return (
     <main className="bg-background text-foreground min-h-screen">
