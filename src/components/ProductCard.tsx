@@ -90,13 +90,19 @@ export default function ProductCard({ p, index = 0 }: { p: Product; index?: numb
         </button>
       </div>
 
-      <div className="p-5 sm:p-6">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{p.category}</p>
-        <h3 className="mt-1.5 font-serif text-xl sm:text-2xl leading-tight">{p.name}</h3>
-        <div className="mt-3 flex items-baseline gap-2">
-          <span className="text-base text-gold font-medium">₹ {p.price.toLocaleString()}</span>
+      <div className="p-3 sm:p-6">
+        <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] sm:tracking-[0.3em] text-muted-foreground">
+          {p.category}
+        </p>
+        <h3 className="mt-1 sm:mt-1.5 font-serif text-sm sm:text-2xl leading-tight line-clamp-2">
+          {p.name}
+        </h3>
+        <div className="mt-2 sm:mt-3 flex items-baseline gap-2">
+          <span className="text-sm sm:text-base text-gold font-medium">
+            ₹ {p.price.toLocaleString()}
+          </span>
           {p.oldPrice && (
-            <span className="text-xs text-muted-foreground line-through">
+            <span className="text-[10px] sm:text-xs text-muted-foreground line-through">
               ₹ {p.oldPrice.toLocaleString()}
             </span>
           )}
