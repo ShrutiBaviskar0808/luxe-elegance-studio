@@ -57,7 +57,9 @@ function ProductPage() {
     setActiveImg(product.image);
   }, [product.id, product.image]);
 
-  const gallery = [product.image, product.image, product.image, product.image];
+  const gallery = product.gallery?.length
+    ? Array.from(new Set([product.image, ...product.gallery, product.image])).slice(0, 4)
+    : [product.image, product.image, product.image, product.image];
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -113,14 +115,37 @@ function ProductPage() {
         </div>
 
         <div>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-gold">
+            {product.collection ?? product.category}
+          </p>
           <h1 className="font-display text-2xl tracking-tight sm:text-3xl">{product.name}</h1>
           <p className="mt-2 text-sm text-foreground/60">
-            {product.material ?? "Hand-finished fine jewellery"}
+            {product.subcategory ?? product.material ?? "Hand-finished fine jewellery"}
           </p>
           <p className="mt-4 text-lg font-semibold text-gold">₹ {product.price.toLocaleString()}</p>
           <p className="mt-6 text-sm text-foreground/75">
             {product.description ?? "A timeless piece designed to elevate everyday wear."}
           </p>
+
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border border-foreground/10 bg-background p-4">
+              <p className="text-[10px] uppercase tracking-[0.28em] text-foreground/50">Material</p>
+              <p className="mt-1 text-sm text-foreground">{product.material ?? "Mixed metal finish"}</p>
+            </div>
+            <div className="rounded-2xl border border-foreground/10 bg-background p-4">
+              <p className="text-[10px] uppercase tracking-[0.28em] text-foreground/50">Shipping</p>
+              <p className="mt-1 text-sm text-foreground">Ships in 3-5 business days</p>
+            </div>
+            <div className="rounded-2xl border border-foreground/10 bg-background p-4">
+              <p className="text-[10px] uppercase tracking-[0.28em] text-foreground/50">Care</p>
+              <p className="mt-1 text-sm text-foreground">Keep dry and store in the box provided</p>
+            </div>
+            <div className="rounded-2xl border border-foreground/10 bg-background p-4">
+              <p className="text-[10px] uppercase tracking-[0.28em] text-foreground/50">Packaging</p>
+              <p className="mt-1 text-sm text-foreground">Gift-ready premium packaging</p>
+            </div>
+          </div>
+
           <div className="mt-8 flex items-center gap-4">
             <button
               onClick={() => {

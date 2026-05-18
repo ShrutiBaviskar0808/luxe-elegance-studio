@@ -1,13 +1,18 @@
+import { allCollectionProducts } from "@/data/categoryCollections";
+
 export type Product = {
   id: string;
   name: string;
-  category: "Earrings" | "Rings" | "Necklaces" | "Bracelets";
+  category: string;
   price: number;
   oldPrice?: number;
   image: string;
   badge?: "New" | "Bestseller" | "Limited" | "Trending";
   material?: string;
   description?: string;
+  collection?: string;
+  subcategory?: string;
+  gallery?: string[];
 };
 
 const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=80`;
@@ -280,11 +285,13 @@ const bracelets: Product[] = [
   },
 ];
 
-export const products: Product[] = [...earrings, ...rings, ...necklaces, ...bracelets];
+export const catalogProducts: Product[] = [...earrings, ...rings, ...necklaces, ...bracelets];
 
-export const bestSellers = products.filter((p) => p.badge === "Bestseller");
-export const newArrivals = products.filter((p) => p.badge === "New" || p.badge === "Limited");
-export const trending = products.filter((p) => p.badge === "Trending" || p.badge === "Limited");
+export const bestSellers = catalogProducts.filter((p) => p.badge === "Bestseller");
+export const newArrivals = catalogProducts.filter(
+  (p) => p.badge === "New" || p.badge === "Limited",
+);
+export const trending = catalogProducts.filter((p) => p.badge === "Trending" || p.badge === "Limited");
 
 export const byCategory = {
   Earrings: earrings,
@@ -292,5 +299,7 @@ export const byCategory = {
   Necklaces: necklaces,
   Bracelets: bracelets,
 };
+
+export const products = [...catalogProducts, ...allCollectionProducts];
 
 export const getProductById = (id: string) => products.find((p) => p.id === id);

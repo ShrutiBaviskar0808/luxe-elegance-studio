@@ -5,19 +5,23 @@ import { ChevronRight } from "lucide-react";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import {
-  categorySlugs,
-  isCategorySlug,
-  type CategoryProduct,
-  type CategorySlug,
-} from "@/data/categoryCollections";
+import ProductCard from "@/components/ProductCard";
+import { categorySlugs, isCategorySlug, type CategorySlug } from "@/data/categoryCollections";
 
 export const Route = createFileRoute("/$category")({
   loader: ({ params }) => {
     if (!isCategorySlug(params.category)) throw notFound();
     const slug = params.category as CategorySlug;
     const data = categorySlugs[slug];
-    return { slug: params.category, title: data.title, products: data.products };
+    const products = data.sections.flatMap((section) => section.products);
+    return {
+      slug: params.category,
+      title: data.title,
+      description: data.description,
+      heroImage: data.heroImage,
+      sections: data.sections,
+      products,
+    };
   },
   head: ({ loaderData }) => ({
     meta: loaderData
@@ -48,7 +52,7 @@ export const Route = createFileRoute("/$category")({
 
 function CategoryPage() {
   const data = Route.useLoaderData();
-  const { title, products } = data;
+  const { title, description, heroImage, sections } = data;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -56,7 +60,11 @@ function CategoryPage() {
       <Navbar />
 
       <section className="relative overflow-hidden border-b border-foreground/10 bg-cream">
-        <div className="mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 sm:py-20">
+        <div className="absolute inset-0 opacity-30">
+          <img src={heroImage} alt={title} className="h-full w-full object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-linear-to-b from-cream/30 via-cream/70 to-cream" />
+        <div className="relative mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 sm:py-20">
           <nav className="mb-4 flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.3em] text-foreground/60">
             <Link to="/" className="transition hover:text-foreground">
               Home
@@ -73,64 +81,38 @@ function CategoryPage() {
             <em className="not-italic text-gradient-gold">{title}</em>
           </motion.h1>
           <p className="mt-3 text-xs tracking-wide text-foreground/60 sm:text-sm">
-            {products.length} {products.length === 1 ? "piece" : "pieces"}
+            {description}
           </p>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-3 py-10 sm:px-6 sm:py-16">
-        {products.length === 0 ? (
-          <div className="py-20 text-center text-foreground/60">
-            <p>New arrivals coming soon to this collection.</p>
-            <Link
-              to="/"
-              className="mt-6 inline-block text-[11px] uppercase tracking-[0.28em] text-gold hover:underline"
-            >
-              ← Continue shopping
-            </Link>
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-            {products.map((product) => (
-              <CategoryCard key={product.name} product={product} />
-            ))}
-          </div>
-        )}
+        <div className="space-y-10 sm:space-y-14">
+          {sections.map((section, sectionIndex) => (
+            <div key={section.title}>
+              <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-gold">Subcategory</p>
+                  <h2 className="mt-1 font-display text-2xl tracking-tight sm:text-3xl">
+                    {section.title}
+                  </h2>
+                  <p className="mt-2 max-w-2xl text-sm text-foreground/65">{section.description}</p>
+                </div>
+                <p className="text-[10px] uppercase tracking-[0.28em] text-foreground/50">
+                  {section.products.length} items
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+                {section.products.map((product, index) => (
+                  <ProductCard key={product.id} p={product} index={sectionIndex * 6 + index} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <Footer />
     </main>
-  );
-}
-
-function CategoryCard({ product }: { product: CategoryProduct }) {
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.55 }}
-      className="group overflow-hidden rounded-[1.25rem] bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-luxe sm:rounded-[1.75rem]"
-    >
-      <div className="relative aspect-[4/5] overflow-hidden bg-cream">
-        <img
-          src={product.image}
-          alt={product.name}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
-        />
-      </div>
-
-      <div className="p-3 sm:p-6">
-        <p className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground sm:text-[10px] sm:tracking-[0.3em]">
-          {product.material}
-        </p>
-        <h3 className="mt-1 line-clamp-2 font-serif text-sm leading-tight sm:mt-1.5 sm:text-2xl">
-          {product.name}
-        </h3>
-        <p className="mt-2 text-xs text-foreground/70 sm:text-sm">{product.description}</p>
-        <p className="mt-3 text-sm font-medium text-gold sm:text-base">{product.price}</p>
-      </div>
-    </motion.article>
   );
 }
