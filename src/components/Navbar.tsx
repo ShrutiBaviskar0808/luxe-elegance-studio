@@ -137,11 +137,12 @@ export default function Navbar() {
             <Logo />
           </a>
 
-          <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
+          {/* Right zone */}
+          <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0 flex-1 min-w-0 justify-end">
             <button
               aria-label="Wishlist"
               onClick={() => setWishlistOpen(true)}
-              className="relative p-2 sm:p-2.5 rounded-full hover:bg-foreground/5 transition"
+              className="relative p-1.5 sm:p-2.5 rounded-full hover:bg-foreground/5 transition flex-shrink-0"
             >
               <Heart className="h-4 w-4 sm:h-[1.125rem] sm:w-[1.125rem]" />
               {wishlist.length > 0 && (
@@ -153,7 +154,7 @@ export default function Navbar() {
             <button
               aria-label="Bag"
               onClick={() => setCartOpen(true)}
-              className="relative p-2 sm:p-2.5 rounded-full hover:bg-foreground/5 transition"
+              className="relative p-1.5 sm:p-2.5 rounded-full hover:bg-foreground/5 transition flex-shrink-0"
             >
               <ShoppingBag className="h-4 w-4 sm:h-[1.125rem] sm:w-[1.125rem]" />
               <AnimatePresence>
