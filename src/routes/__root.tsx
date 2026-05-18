@@ -144,7 +144,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <ShopProvider>
+        <Outlet />
+        <SearchOverlay />
+        <CartDrawer />
+        <WishlistDrawer />
+        <QuickViewModal />
+        <CheckoutModal />
+        <Toaster position="bottom-right" />
+      </ShopProvider>
     </QueryClientProvider>
   );
 }
