@@ -273,16 +273,21 @@ export default function Navbar() {
                           {g.tagline}
                         </p>
                         <button
-                          onClick={() => goCollection(g.title)}
+                          onClick={() => goParentCollection(g.parentSlug)}
                           className="mt-2 block font-display text-lg tracking-tight text-gradient-gold"
                         >
                           {g.title}
                         </button>
                         <ul className="mt-5 space-y-1.5">
                           {g.items.map((it) => (
-                            <li key={it.label}>
-                              <button
-                                onClick={() => goCollection(g.title)}
+                            <li key={`${g.parentSlug}-${it.slug}`}>
+                              <Link
+                                to="/collections/$slug"
+                                params={{ slug: it.slug }}
+                                onClick={() => {
+                                  setMegaOpen(false);
+                                  setOpen(false);
+                                }}
                                 className="group/item w-full flex items-center justify-between rounded-md px-3 py-2 text-[13px] text-foreground/75 hover:bg-foreground/5 hover:text-foreground transition-colors"
                               >
                                 <span className="relative">
@@ -290,7 +295,7 @@ export default function Navbar() {
                                   <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-gold transition-all duration-300 group-hover/item:w-full" />
                                 </span>
                                 <ChevronRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 transition-all group-hover/item:opacity-100 group-hover/item:translate-x-0 text-gold" />
-                              </button>
+                              </Link>
                             </li>
                           ))}
                         </ul>
