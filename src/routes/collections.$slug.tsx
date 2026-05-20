@@ -10,6 +10,7 @@ import {
   isSubcategorySlug,
   subcategorySlugs,
 } from "@/data/categoryCollections";
+import type { Product } from "@/data/products";
 
 export const Route = createFileRoute("/collections/$slug")({
   loader: ({ params }) => {
