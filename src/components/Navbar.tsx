@@ -108,12 +108,19 @@ export default function Navbar() {
     smoothScroll(l.href);
   };
 
-  const goCollection = (groupTitle: string) => {
-    const category = collectionRoutes[groupTitle] ?? "tarnish-jewellery";
+  const goParentCollection = (parentSlug: string) => {
     setOpen(false);
     setMegaOpen(false);
     setCategory("All");
-    navigate({ to: "/$category", params: { category } });
+    navigate({ to: "/$category", params: { category: parentSlug } });
+  };
+
+  const goSubcategory = (slug: string) => {
+    setOpen(false);
+    setMegaOpen(false);
+    setMobileColOpen(null);
+    setCategory("All");
+    navigate({ to: "/collections/$slug", params: { slug } });
   };
 
   return (
