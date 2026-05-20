@@ -15,48 +15,52 @@ const links = [
 ];
 
 // Mega menu — Collections
-type SubItem = { label: string; category: Cat };
-type MegaGroup = { title: string; tagline: string; items: SubItem[] };
+type SubItem = { label: string; slug: string };
+type MegaGroup = { title: string; tagline: string; parentSlug: string; items: SubItem[] };
 
 const collections: MegaGroup[] = [
   {
     title: "Tarnish Jewellery",
     tagline: "Anti-tarnish everyday luxe",
+    parentSlug: "tarnish-jewellery",
     items: [
-      { label: "Earrings", category: "Earrings" },
-      { label: "Bangles", category: "Bracelets" },
-      { label: "Chain", category: "Necklaces" },
-      { label: "Bracelet", category: "Bracelets" },
-      { label: "Anklet", category: "Bracelets" },
-      { label: "Hand Chain", category: "Bracelets" },
+      { label: "Earrings", slug: "earrings" },
+      { label: "Bangles", slug: "bangles" },
+      { label: "Chain", slug: "chain" },
+      { label: "Bracelet", slug: "bracelet" },
+      { label: "Anklet", slug: "anklet" },
+      { label: "Hand Chain", slug: "hand-chain" },
     ],
   },
   {
     title: "Oxidish Jewellery",
     tagline: "Heritage silver-tone craft",
+    parentSlug: "oxidish-jewellery",
     items: [
-      { label: "Earrings", category: "Earrings" },
-      { label: "Rings", category: "Rings" },
-      { label: "Kada", category: "Bracelets" },
-      { label: "Payal", category: "Bracelets" },
-      { label: "Belt", category: "All" },
-      { label: "Necklace Set", category: "Necklaces" },
+      { label: "Earrings", slug: "earrings" },
+      { label: "Rings", slug: "rings" },
+      { label: "Kada", slug: "kada" },
+      { label: "Payal", slug: "payal" },
+      { label: "Belt", slug: "belt" },
+      { label: "Necklace Set", slug: "necklace-set" },
     ],
   },
   {
     title: "Cuties / Gift Hampers",
     tagline: "Curated boxes to gift",
-    items: [{ label: "Additions", category: "All" }],
+    parentSlug: "cuties-gift-hampers",
+    items: [{ label: "Additions", slug: "additions" }],
   },
   {
     title: "Additions",
     tagline: "Accessories & layering",
+    parentSlug: "additions",
     items: [
-      { label: "Charms", category: "All" },
-      { label: "Mini Pendants", category: "All" },
-      { label: "Stacking Rings", category: "All" },
-      { label: "Ear Cuffs", category: "All" },
-      { label: "Layered Chains", category: "All" },
+      { label: "Charms", slug: "charms" },
+      { label: "Mini Pendants", slug: "mini-pendants" },
+      { label: "Stacking Rings", slug: "stacking-rings" },
+      { label: "Ear Cuffs", slug: "ear-cuffs" },
+      { label: "Layered Chains", slug: "layered-chains" },
     ],
   },
 ];
