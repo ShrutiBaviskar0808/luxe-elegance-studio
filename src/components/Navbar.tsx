@@ -373,9 +373,9 @@ export default function Navbar() {
                               className="overflow-hidden"
                             >
                               {g.items.map((it) => (
-                                <li key={it.label}>
+                                <li key={`${g.parentSlug}-${it.slug}`}>
                                   <button
-                                    onClick={() => goCollection(g.title)}
+                                    onClick={() => goSubcategory(it.slug)}
                                     className="w-full text-left px-5 py-2.5 text-[13px] text-foreground/75 hover:text-foreground hover:bg-foreground/5 transition"
                                   >
                                     {it.label}
