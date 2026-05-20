@@ -171,7 +171,7 @@ function ProductPage() {
       <section className="mx-auto max-w-7xl px-3 py-10 sm:px-6 sm:py-16">
         <h2 className="mb-6 font-display text-xl tracking-tight sm:text-2xl">Related Products</h2>
         <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
-          {related.map((p) => (
+          {(related as Product[]).map((p: Product) => (
             <ProductCard key={p.id} p={p} />
           ))}
         </div>
