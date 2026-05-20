@@ -163,7 +163,7 @@ export default function Navbar() {
               className="absolute left-1/2 flex -translate-x-1/2 items-center justify-center px-2"
               aria-label="PIPA Jewellery home"
             >
-              <Logo className="h-8 sm:h-9 md:h-14" />
+              <Logo className="h-9 sm:h-11 md:h-14 lg:h-16" />
             </a>
 
             {/* Right zone */}

@@ -32,7 +32,7 @@ export default function Footer() {
 
       <div className="mx-auto max-w-7xl px-6 py-12 grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <Logo tone="light" className="h-10 sm:h-12 md:h-14" />
+          <Logo tone="light" className="h-11 sm:h-14 md:h-16" />
           <p className="mt-5 max-w-sm text-ivory/60 leading-relaxed">
             Hand-finished fine jewellery, made to be lived in. Designed in our atelier — delivered
             to your door, with love.

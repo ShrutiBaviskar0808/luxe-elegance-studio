@@ -23,7 +23,7 @@ export default function ProductCard({ p, index = 0 }: { p: Product; index?: numb
       transition={{ duration: 0.65, delay: index * 0.06, ease: "easeOut" }}
       className="group relative rounded-[1.25rem] sm:rounded-[1.75rem] overflow-hidden bg-card shadow-soft hover:shadow-luxe transition-all duration-500 hover:-translate-y-1.5"
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-cream">
+      <div className="relative aspect-square overflow-hidden bg-cream">
         <Link
           to="/product/$id"
           params={{ id: p.id }}
@@ -34,7 +34,7 @@ export default function ProductCard({ p, index = 0 }: { p: Product; index?: numb
           src={p.image}
           alt={p.name}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-onyx/45 via-transparent to-transparent opacity-70 group-hover:opacity-100 transition" />
 

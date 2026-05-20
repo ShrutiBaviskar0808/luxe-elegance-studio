@@ -12,7 +12,7 @@ export default function Logo({
         src="/images/pipa-logo.svg"
         alt="PIPA Jewellery"
         className={`block w-auto object-contain transition-all duration-300 hover:opacity-90 ${filterClass} ${
-          className || "h-8 sm:h-10 md:h-14"
+          className || "h-9 sm:h-11 md:h-14 lg:h-16"
         }`}
         draggable={false}
         loading="eager"

@@ -1,4 +1,5 @@
 import { allCollectionProducts } from "@/data/categoryCollections";
+import { productImages } from "@/data/productImages";
 
 export type Product = {
   id: string;
@@ -41,7 +42,7 @@ const earrings: Product[] = [
     name: "Mira Solitaire Studs",
     category: "Earrings",
     price: 5400,
-    image: img("photo-1620656798932-902a85a48d50"),
+    image: productImages.miraSolitaireStuds,
     badge: "Bestseller",
   },
   {
@@ -73,7 +74,7 @@ const earrings: Product[] = [
     name: "Élise Gold Hoops",
     category: "Earrings",
     price: 8900,
-    image: img("photo-1561172317-c64a767e2d6c"),
+    image: productImages.eliseGoldHoops,
   },
   {
     id: "e8",
@@ -91,7 +92,7 @@ const rings: Product[] = [
     name: "Celeste Diamond Ring",
     category: "Rings",
     price: 24900,
-    image: img("photo-1605100804763-247f67b3557e"),
+    image: productImages.celesteDiamondRing,
     badge: "Bestseller",
   },
   {
@@ -115,7 +116,7 @@ const rings: Product[] = [
     name: "Isla Solitaire Ring",
     category: "Rings",
     price: 18900,
-    image: img("photo-1598560917505-59a3ad60e16c"),
+    image: productImages.islaSolitaireRing,
     badge: "New",
   },
   {
@@ -139,7 +140,7 @@ const rings: Product[] = [
     name: "Liana Vintage Ring",
     category: "Rings",
     price: 13400,
-    image: img("photo-1596944946297-cfc6a4f4a536"),
+    image: productImages.lianaVintageRing,
   },
   {
     id: "r8",
@@ -199,7 +200,7 @@ const necklaces: Product[] = [
     name: "Mira Choker Set",
     category: "Necklaces",
     price: 19500,
-    image: img("photo-1535632066274-1c2253d324d7"),
+    image: productImages.miraChokerSet,
   },
   {
     id: "n7",
@@ -250,7 +251,7 @@ const bracelets: Product[] = [
     name: "Layla Charm Bracelet",
     category: "Bracelets",
     price: 8900,
-    image: img("photo-1535632066274-1c2253d324d7"),
+    image: productImages.laylaCharmBracelet,
     badge: "Trending",
   },
   {

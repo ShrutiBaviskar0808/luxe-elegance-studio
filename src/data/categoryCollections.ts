@@ -1,4 +1,5 @@
 import type { Product } from "@/data/products";
+import { productImages } from "@/data/productImages";
 
 export type CategorySlug =
   | "tarnish-jewellery"
@@ -91,7 +92,7 @@ const tarnishSections: CollectionSection[] = [
       },
       {
         name: "Mira Solitaire Studs",
-        image: "https://images.unsplash.com/photo-1620656798932-902a85a48d50?auto=format&fit=crop&w=900&q=80",
+        image: productImages.miraSolitaireStuds,
         description: "Minimal studs with a single luminous accent stone.",
         price: 5400,
         material: "Gold-plated brass, crystal",
@@ -251,7 +252,7 @@ const tarnishSections: CollectionSection[] = [
       },
       {
         name: "Layla Charm Bracelet",
-        image: "https://images.unsplash.com/photo-1535632066274-1c2253d324d7?auto=format&fit=crop&w=900&q=80",
+        image: productImages.laylaCharmBracelet,
         description: "A charm bracelet with delicate movement and shine.",
         price: 8900,
         material: "Gold-tone alloy",
