@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
 import { useShop } from "@/context/ShopContext";
-import { getProductById, products as ALL } from "@/data/products";
+import { getProductById, products as ALL, type Product } from "@/data/products";
 
 export const Route = createFileRoute("/product/$id")({
   loader: ({ params }) => {
