@@ -16,6 +16,7 @@ import WishlistDrawer from "@/components/WishlistDrawer";
 import SearchOverlay from "@/components/SearchOverlay";
 import QuickViewModal from "@/components/QuickViewModal";
 import CheckoutModal from "@/components/CheckoutModal";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 function NotFoundComponent() {
   return (
@@ -153,6 +154,7 @@ function RootComponent() {
         <WishlistDrawer />
         <QuickViewModal />
         <CheckoutModal />
+        <WhatsAppFloat />
         <Toaster position="bottom-right" />
       </ShopProvider>
     </QueryClientProvider>
