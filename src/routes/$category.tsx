@@ -6,7 +6,8 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
-import { categorySlugs, isCategorySlug, type CategorySlug } from "@/data/categoryCollections";
+import { categorySlugs, isCategorySlug, type CategorySlug, type CollectionSection } from "@/data/categoryCollections";
+import type { Product } from "@/data/products";
 
 export const Route = createFileRoute("/$category")({
   loader: ({ params }) => {
