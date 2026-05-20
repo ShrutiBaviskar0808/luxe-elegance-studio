@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">PIPA Jewellery</title>
+  <desc id="desc">PIPA Jewellery wordmark</desc>
+  <style>
+    .wordmark {
+      fill: #1a1a1a;
+      font-family: "Italiana", "Cormorant Garamond", "Times New Roman", serif;
+      font-weight: 400;
+      text-anchor: middle;
+    }
+    .submark {
+      fill: #1a1a1a;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 400;
+      text-anchor: middle;
+      letter-spacing: 0.18em;
+    }
+  </style>
+  <text x="600" y="285" class="wordmark" font-size="240" letter-spacing="0.06em">PIPA</text>
+  <text x="600" y="410" class="submark" font-size="54">JEWELLERY</text>
+</svg>

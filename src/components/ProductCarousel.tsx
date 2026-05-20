@@ -114,7 +114,7 @@ export default function ProductCarousel({
         <div className="relative">
           <div ref={emblaRef} className="overflow-hidden -mx-2">
             <div className="flex touch-pan-y">
-              {products.map((p, i) => (
+              {products.map((p: Product, i: number) => (
                 <div
                   key={p.id}
                   className="shrink-0 grow-0 px-2 basis-[72%] sm:basis-[45%] md:basis-[33%] lg:basis-[25%] xl:basis-[22%]"

@@ -300,6 +300,7 @@ export const byCategory = {
   Bracelets: bracelets,
 };
 
-export const products = [...catalogProducts, ...allCollectionProducts];
+export const products: Product[] = [...catalogProducts, ...allCollectionProducts];
 
-export const getProductById = (id: string) => products.find((p) => p.id === id);
+export const getProductById = (id: string): Product | undefined =>
+  products.find((p) => p.id === id);

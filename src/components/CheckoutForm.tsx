@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ShoppingBag, AlertCircle, CheckCircle, Loader } from "lucide-react";
@@ -34,9 +33,7 @@ export function CheckoutForm() {
     pincode: "",
   });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -106,6 +103,7 @@ export function CheckoutForm() {
 
       // Prepare Razorpay options
       const amount = formatAmountForRazorpay(cartSubtotal);
+      const logoImage = `${window.location.origin}/images/pipa-logo.svg`;
 
       const options = {
         key: "rzp_live_YOUR_KEY_ID", // Replace with your Razorpay key
@@ -117,8 +115,7 @@ export function CheckoutForm() {
         customer_phone: formData.phone,
         receipt: receipt,
         description: `Purchase from PIPA Jewellery - ${cart.length} items`,
-        image:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/logo.png",
+        image: logoImage,
         theme: {
           color: "#1a1a1a", // Premium black
         },
@@ -130,12 +127,9 @@ export function CheckoutForm() {
         (response: RazorpayResponse) => {
           // Payment successful
           setPaymentSuccess(true);
-          toast.success(
-            "Payment successful! Your order has been confirmed.",
-            {
-              duration: 5000,
-            }
-          );
+          toast.success("Payment successful! Your order has been confirmed.", {
+            duration: 5000,
+          });
           console.log("Payment successful:", response);
           // Clear form after 2 seconds
           setTimeout(() => {
@@ -153,17 +147,14 @@ export function CheckoutForm() {
         (error: unknown) => {
           // Payment failed
           const errorMessage =
-  error instanceof Error
-    ? error.message
-    : "Payment failed. Please try again.";
+            error instanceof Error ? error.message : "Payment failed. Please try again.";
           setPaymentError(errorMessage);
           toast.error(errorMessage);
           console.error("Payment error:", error);
-        }
+        },
       );
     } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : "An error occurred";
+      const errorMessage = error instanceof Error ? error.message : "An error occurred";
       setPaymentError(errorMessage);
       toast.error(errorMessage);
       console.error("Checkout error:", error);
@@ -183,9 +174,7 @@ export function CheckoutForm() {
       >
         {/* Header */}
         <div className="mb-8 text-center">
-          <h1 className="font-display text-4xl tracking-tight text-foreground">
-            Secure Checkout
-          </h1>
+          <h1 className="font-display text-4xl tracking-tight text-foreground">Secure Checkout</h1>
           <p className="mt-2 text-sm text-foreground/60">
             Complete your purchase of hand-finished luxury jewellery
           </p>
@@ -199,18 +188,14 @@ export function CheckoutForm() {
             transition={{ delay: 0.1 }}
             className="rounded-2xl border border-foreground/10 bg-foreground/2 p-6"
           >
-            <h2 className="font-display text-xl text-foreground mb-4">
-              Order Summary
-            </h2>
+            <h2 className="font-display text-xl text-foreground mb-4">Order Summary</h2>
             <div className="space-y-3">
               <div className="flex items-center justify-between text-sm">
                 <span className="text-foreground/60">Items in cart:</span>
                 <span className="font-medium text-foreground">{cart.length}</span>
               </div>
               <div className="flex items-center justify-between border-t border-foreground/10 pt-3">
-                <span className="font-display text-lg text-foreground">
-                  Total Amount
-                </span>
+                <span className="font-display text-lg text-foreground">Total Amount</span>
                 <span className="font-display text-2xl text-gradient-gold">
                   {formatDisplayAmount(totalAmount)}
                 </span>
@@ -225,9 +210,7 @@ export function CheckoutForm() {
             transition={{ delay: 0.2 }}
             className="space-y-5"
           >
-            <h2 className="font-display text-xl text-foreground">
-              Delivery Details
-            </h2>
+            <h2 className="font-display text-xl text-foreground">Delivery Details</h2>
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">

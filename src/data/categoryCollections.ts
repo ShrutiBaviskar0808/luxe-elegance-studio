@@ -42,8 +42,8 @@ const buildProducts = (
   collectionTitle: string,
   sectionTitle: string,
   drafts: Draft[],
-) =>
-  drafts.map((draft, index) => ({
+) : Product[] =>
+  drafts.map((draft, index): Product => ({
     id: `${collectionSlug}-${slugify(sectionTitle)}-${index + 1}`,
     name: draft.name,
     category: sectionTitle,
@@ -952,7 +952,7 @@ export const categorySlugs: Record<CategorySlug, CategoryCollection> = {
 
 export const allCollectionProducts = Object.values(categorySlugs).flatMap((collection) =>
   collection.sections.flatMap((section) => section.products),
-);
+) as Product[];
 
 export const isCategorySlug = (s: string): s is CategorySlug =>
   Object.prototype.hasOwnProperty.call(categorySlugs, s);

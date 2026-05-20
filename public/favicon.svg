@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" role="img" aria-labelledby="title">
+  <title id="title">PIPA Jewellery</title>
+  <rect width="256" height="256" rx="48" fill="#faf7f2"/>
+  <text
+    x="128"
+    y="148"
+    fill="#1a1a1a"
+    text-anchor="middle"
+    font-family="Italiana, Cormorant Garamond, Times New Roman, serif"
+    font-size="112"
+    letter-spacing="0.08em"
+  >
+    PIPA
+  </text>
+</svg>

@@ -135,69 +135,72 @@ export default function Navbar() {
           scrolled ? "glass shadow-soft" : "bg-background/85 backdrop-blur-md"
         }`}
       >
-        {/* Top row — strict 3-zone layout: left icons | centered logo | right icons */}
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 flex items-center gap-1 sm:gap-3 py-2.5 sm:py-4">
-          {/* Left zone */}
-          <div className="flex items-center gap-0.5 sm:gap-1 shrink-0 flex-1 min-w-0 justify-start">
-            <button
-              aria-label="Search"
-              onClick={() => setSearchOpen(true)}
-              className="p-1.5 sm:p-2.5 rounded-full hover:bg-foreground/5 transition shrink-0"
-            >
-              <Search className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
-            </button>
-            <button
-              aria-label="Menu"
-              className="lg:hidden p-1.5 sm:p-2.5 rounded-full hover:bg-foreground/5 shrink-0"
-              onClick={() => setOpen((o) => !o)}
-            >
-              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-            </button>
-          </div>
+        {/* Top row - strict 3-zone layout: left icons | centered logo | right icons */}
+        <div className="mx-auto max-w-7xl px-3 sm:px-6">
+          <div className="relative flex items-center justify-between gap-2 py-3 sm:py-4">
+            {/* Left zone */}
+            <div className="flex min-w-0 flex-1 items-center justify-start gap-1 sm:gap-2">
+              <button
+                aria-label="Search"
+                onClick={() => setSearchOpen(true)}
+                className="hidden rounded-full p-2.5 transition hover:bg-foreground/5 sm:inline-flex"
+              >
+                <Search className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
+              </button>
+              <button
+                aria-label="Menu"
+                className="inline-flex rounded-full p-2 transition hover:bg-foreground/5 lg:hidden"
+                onClick={() => setOpen((o) => !o)}
+              >
+                {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              </button>
+            </div>
 
-          {/* Center logo */}
-          <a
-            href="#home"
-            onClick={(e) => handleNav(e, { href: "#home", category: "All" })}
-            className="shrink min-w-0 flex justify-center overflow-hidden px-1"
-          >
-            <Logo />
-          </a>
+            {/* Center logo */}
+            <a
+              href="#home"
+              onClick={(e) => handleNav(e, { href: "#home", category: "All" })}
+              className="absolute left-1/2 flex -translate-x-1/2 items-center justify-center px-2"
+              aria-label="PIPA Jewellery home"
+            >
+              <Logo className="h-8 sm:h-9 md:h-14" />
+            </a>
 
-          {/* Right zone */}
-          <div className="flex items-center gap-0.5 sm:gap-1 shrink-0 flex-1 min-w-0 justify-end">
-            <button
-              aria-label="Wishlist"
-              onClick={() => setWishlistOpen(true)}
-              className="relative p-1.5 sm:p-2.5 rounded-full hover:bg-foreground/5 transition shrink-0"
-            >
-              <Heart className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
-              {wishlist.length > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 h-4 w-4 grid place-items-center rounded-full bg-foreground text-background text-[9px]">
-                  {wishlist.length}
-                </span>
-              )}
-            </button>
-            <button
-              aria-label="Bag"
-              onClick={() => setCartOpen(true)}
-              className="relative p-1.5 sm:p-2.5 rounded-full hover:bg-foreground/5 transition shrink-0"
-            >
-              <ShoppingBag className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
-              <AnimatePresence>
-                {cartCount > 0 && (
-                  <motion.span
-                    key={cartCount}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
-                    className="absolute -top-0.5 -right-0.5 h-4 w-4 grid place-items-center rounded-full bg-gradient-gold text-onyx text-[9px]"
-                  >
-                    {cartCount}
-                  </motion.span>
+            {/* Right zone */}
+            <div className="flex min-w-0 flex-1 items-center justify-end gap-1 sm:gap-2">
+              <button
+                aria-label="Wishlist"
+                onClick={() => setWishlistOpen(true)}
+                className="relative hidden rounded-full p-2.5 transition hover:bg-foreground/5 sm:inline-flex"
+              >
+                <Heart className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
+                {wishlist.length > 0 && (
+                  <span className="absolute -top-0.5 -right-0.5 grid h-4 w-4 place-items-center rounded-full bg-foreground text-[9px] text-background">
+                    {wishlist.length}
+                  </span>
                 )}
-              </AnimatePresence>
-            </button>
+              </button>
+              <button
+                aria-label="Bag"
+                onClick={() => setCartOpen(true)}
+                className="relative rounded-full p-2 transition hover:bg-foreground/5 sm:p-2.5"
+              >
+                <ShoppingBag className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
+                <AnimatePresence>
+                  {cartCount > 0 && (
+                    <motion.span
+                      key={cartCount}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      exit={{ scale: 0 }}
+                      className="absolute -top-0.5 -right-0.5 grid h-4 w-4 place-items-center rounded-full bg-gradient-gold text-[9px] text-onyx"
+                    >
+                      {cartCount}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -334,6 +337,26 @@ export default function Navbar() {
             className="lg:hidden glass border-t border-foreground/10 overflow-hidden"
           >
             <nav className="mx-auto max-w-7xl px-6 py-6 flex flex-col gap-1">
+              <div className="mb-4 flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    setOpen(false);
+                    setSearchOpen(true);
+                  }}
+                  className="flex-1 rounded-full border border-foreground/10 px-4 py-3 text-[11px] uppercase tracking-[0.22em] hover:border-foreground/20 hover:bg-foreground/5 transition"
+                >
+                  Search
+                </button>
+                <button
+                  onClick={() => {
+                    setOpen(false);
+                    setWishlistOpen(true);
+                  }}
+                  className="rounded-full border border-foreground/10 px-4 py-3 text-[11px] uppercase tracking-[0.22em] hover:border-foreground/20 hover:bg-foreground/5 transition"
+                >
+                  Wishlist
+                </button>
+              </div>
               {links.map((l) => (
                 <a
                   key={l.label}
