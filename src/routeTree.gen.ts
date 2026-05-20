@@ -13,6 +13,7 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CategoryRouteImport } from './routes/$category'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
+import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 
 const CheckoutRoute = CheckoutRouteImport.update({
   id: '/checkout',
@@ -34,17 +35,24 @@ const ProductIdRoute = ProductIdRouteImport.update({
   path: '/product/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/collections/$slug',
+  path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$category': typeof CategoryRoute
   '/checkout': typeof CheckoutRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$category': typeof CategoryRoute
   '/checkout': typeof CheckoutRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$category': typeof CategoryRoute
   '/checkout': typeof CheckoutRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/product/$id': typeof ProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$category' | '/checkout' | '/product/$id'
+  fullPaths:
+    | '/'
+    | '/$category'
+    | '/checkout'
+    | '/collections/$slug'
+    | '/product/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$category' | '/checkout' | '/product/$id'
-  id: '__root__' | '/' | '/$category' | '/checkout' | '/product/$id'
+  to: '/' | '/$category' | '/checkout' | '/collections/$slug' | '/product/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/$category'
+    | '/checkout'
+    | '/collections/$slug'
+    | '/product/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CategoryRoute: typeof CategoryRoute
   CheckoutRoute: typeof CheckoutRoute
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
   ProductIdRoute: typeof ProductIdRoute
 }
 
@@ -99,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/collections/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -106,18 +134,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CategoryRoute: CategoryRoute,
   CheckoutRoute: CheckoutRoute,
+  CollectionsSlugRoute: CollectionsSlugRoute,
   ProductIdRoute: ProductIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

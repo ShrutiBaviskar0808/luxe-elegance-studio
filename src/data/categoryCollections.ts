@@ -958,3 +958,58 @@ export const isCategorySlug = (s: string): s is CategorySlug =>
   Object.prototype.hasOwnProperty.call(categorySlugs, s);
 
 export type CategoryProduct = Product;
+
+// ============================================================
+// Subcategory routing — flat slug-based collection pages
+// (e.g. /collections/earrings, /collections/bangles, /collections/rings)
+// Aggregates products across parent collections that share a subcategory.
+// ============================================================
+
+export type SubcategoryCollection = {
+  slug: string;
+  title: string;
+  description: string;
+  heroImage: string;
+  parents: string[];
+  products: Product[];
+};
+
+const subcategorySlugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+const subcategoryHeroFallback =
+  "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?auto=format&fit=crop&w=1400&q=85";
+
+const subcategoryAccumulator = new Map<string, SubcategoryCollection>();
+(Object.entries(categorySlugs) as Array<[CategorySlug, CategoryCollection]>).forEach(
+  ([, collection]) => {
+    collection.sections.forEach((section) => {
+      const slug = subcategorySlugify(section.title);
+      const existing = subcategoryAccumulator.get(slug);
+      if (existing) {
+        existing.products.push(...section.products);
+        if (!existing.parents.includes(collection.title))
+          existing.parents.push(collection.title);
+      } else {
+        subcategoryAccumulator.set(slug, {
+          slug,
+          title: section.title,
+          description: section.description,
+          heroImage: section.products[0]?.image ?? subcategoryHeroFallback,
+          parents: [collection.title],
+          products: [...section.products],
+        });
+      }
+    });
+  },
+);
+
+export const subcategorySlugs: Record<string, SubcategoryCollection> =
+  Object.fromEntries(subcategoryAccumulator);
+
+export const isSubcategorySlug = (s: string): boolean =>
+  Object.prototype.hasOwnProperty.call(subcategorySlugs, s);

@@ -6,7 +6,8 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
-import { categorySlugs, isCategorySlug, type CategorySlug } from "@/data/categoryCollections";
+import { categorySlugs, isCategorySlug, type CategorySlug, type CollectionSection } from "@/data/categoryCollections";
+import type { Product } from "@/data/products";
 
 export const Route = createFileRoute("/$category")({
   loader: ({ params }) => {
@@ -120,7 +121,7 @@ function CategoryPage() {
 
       <section className="mx-auto max-w-7xl px-3 py-10 sm:px-6 sm:py-16">
         <div className="space-y-10 sm:space-y-14">
-          {sections.map((section, sectionIndex) => (
+          {(sections as CollectionSection[]).map((section: CollectionSection, sectionIndex: number) => (
             <div key={section.title}>
               <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
                 <div>
@@ -135,7 +136,7 @@ function CategoryPage() {
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-                {section.products.map((product, index) => (
+                {section.products.map((product: Product, index: number) => (
                   <ProductCard key={product.id} p={product} index={sectionIndex * 6 + index} />
                 ))}
               </div>

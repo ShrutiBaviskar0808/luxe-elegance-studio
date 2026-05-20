@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, ShoppingBag, Heart, ChevronDown, ChevronRight } from "lucide-react";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import Logo from "./Logo";
 import { useShop } from "@/context/ShopContext";
 
@@ -15,48 +15,52 @@ const links = [
 ];
 
 // Mega menu — Collections
-type SubItem = { label: string; category: Cat };
-type MegaGroup = { title: string; tagline: string; items: SubItem[] };
+type SubItem = { label: string; slug: string };
+type MegaGroup = { title: string; tagline: string; parentSlug: string; items: SubItem[] };
 
 const collections: MegaGroup[] = [
   {
     title: "Tarnish Jewellery",
     tagline: "Anti-tarnish everyday luxe",
+    parentSlug: "tarnish-jewellery",
     items: [
-      { label: "Earrings", category: "Earrings" },
-      { label: "Bangles", category: "Bracelets" },
-      { label: "Chain", category: "Necklaces" },
-      { label: "Bracelet", category: "Bracelets" },
-      { label: "Anklet", category: "Bracelets" },
-      { label: "Hand Chain", category: "Bracelets" },
+      { label: "Earrings", slug: "earrings" },
+      { label: "Bangles", slug: "bangles" },
+      { label: "Chain", slug: "chain" },
+      { label: "Bracelet", slug: "bracelet" },
+      { label: "Anklet", slug: "anklet" },
+      { label: "Hand Chain", slug: "hand-chain" },
     ],
   },
   {
     title: "Oxidish Jewellery",
     tagline: "Heritage silver-tone craft",
+    parentSlug: "oxidish-jewellery",
     items: [
-      { label: "Earrings", category: "Earrings" },
-      { label: "Rings", category: "Rings" },
-      { label: "Kada", category: "Bracelets" },
-      { label: "Payal", category: "Bracelets" },
-      { label: "Belt", category: "All" },
-      { label: "Necklace Set", category: "Necklaces" },
+      { label: "Earrings", slug: "earrings" },
+      { label: "Rings", slug: "rings" },
+      { label: "Kada", slug: "kada" },
+      { label: "Payal", slug: "payal" },
+      { label: "Belt", slug: "belt" },
+      { label: "Necklace Set", slug: "necklace-set" },
     ],
   },
   {
     title: "Cuties / Gift Hampers",
     tagline: "Curated boxes to gift",
-    items: [{ label: "Additions", category: "All" }],
+    parentSlug: "cuties-gift-hampers",
+    items: [{ label: "Additions", slug: "additions" }],
   },
   {
     title: "Additions",
     tagline: "Accessories & layering",
+    parentSlug: "additions",
     items: [
-      { label: "Charms", category: "All" },
-      { label: "Mini Pendants", category: "All" },
-      { label: "Stacking Rings", category: "All" },
-      { label: "Ear Cuffs", category: "All" },
-      { label: "Layered Chains", category: "All" },
+      { label: "Charms", slug: "charms" },
+      { label: "Mini Pendants", slug: "mini-pendants" },
+      { label: "Stacking Rings", slug: "stacking-rings" },
+      { label: "Ear Cuffs", slug: "ear-cuffs" },
+      { label: "Layered Chains", slug: "layered-chains" },
     ],
   },
 ];
@@ -104,12 +108,19 @@ export default function Navbar() {
     smoothScroll(l.href);
   };
 
-  const goCollection = (groupTitle: string) => {
-    const category = collectionRoutes[groupTitle] ?? "tarnish-jewellery";
+  const goParentCollection = (parentSlug: string) => {
     setOpen(false);
     setMegaOpen(false);
     setCategory("All");
-    navigate({ to: "/$category", params: { category } });
+    navigate({ to: "/$category", params: { category: parentSlug } });
+  };
+
+  const goSubcategory = (slug: string) => {
+    setOpen(false);
+    setMegaOpen(false);
+    setMobileColOpen(null);
+    setCategory("All");
+    navigate({ to: "/collections/$slug", params: { slug } });
   };
 
   return (
@@ -262,16 +273,21 @@ export default function Navbar() {
                           {g.tagline}
                         </p>
                         <button
-                          onClick={() => goCollection(g.title)}
+                          onClick={() => goParentCollection(g.parentSlug)}
                           className="mt-2 block font-display text-lg tracking-tight text-gradient-gold"
                         >
                           {g.title}
                         </button>
                         <ul className="mt-5 space-y-1.5">
                           {g.items.map((it) => (
-                            <li key={it.label}>
-                              <button
-                                onClick={() => goCollection(g.title)}
+                            <li key={`${g.parentSlug}-${it.slug}`}>
+                              <Link
+                                to="/collections/$slug"
+                                params={{ slug: it.slug }}
+                                onClick={() => {
+                                  setMegaOpen(false);
+                                  setOpen(false);
+                                }}
                                 className="group/item w-full flex items-center justify-between rounded-md px-3 py-2 text-[13px] text-foreground/75 hover:bg-foreground/5 hover:text-foreground transition-colors"
                               >
                                 <span className="relative">
@@ -279,7 +295,7 @@ export default function Navbar() {
                                   <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-gold transition-all duration-300 group-hover/item:w-full" />
                                 </span>
                                 <ChevronRight className="h-3.5 w-3.5 opacity-0 -translate-x-1 transition-all group-hover/item:opacity-100 group-hover/item:translate-x-0 text-gold" />
-                              </button>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -357,9 +373,9 @@ export default function Navbar() {
                               className="overflow-hidden"
                             >
                               {g.items.map((it) => (
-                                <li key={it.label}>
+                                <li key={`${g.parentSlug}-${it.slug}`}>
                                   <button
-                                    onClick={() => goCollection(g.title)}
+                                    onClick={() => goSubcategory(it.slug)}
                                     className="w-full text-left px-5 py-2.5 text-[13px] text-foreground/75 hover:text-foreground hover:bg-foreground/5 transition"
                                   >
                                     {it.label}
